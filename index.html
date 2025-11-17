@@ -1,0 +1,2006 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iwox.ai - Intelligence Artificielle de Nouvelle Génération</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        /* ========== VARIABLES & BASE ========== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #050710 0%, #0a0f24 100%);
+            color: #e4e4e7;
+            overflow-x: hidden;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        /* ========== CANVAS BACKGROUND 3D ========== */
+        #particle-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* ========== TYPOGRAPHY ========== */
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            font-size: 1.75rem;
+            letter-spacing: 0.05em;
+            background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: slideInOut 35s ease-in-out infinite;
+        }
+
+        /* ========== LOGO SLIDE ANIMATION ========== */
+        @keyframes slideInOut {
+            0% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+            48% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+            50% {
+                transform: translateX(-100px);
+                opacity: 0;
+            }
+            52% {
+                transform: translateX(100px);
+                opacity: 0;
+            }
+            54% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+        }
+
+        /* ========== LANGUAGE SWITCHER ========== */
+        .lang-switcher {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .lang-btn {
+            padding: 0.375rem 0.75rem;
+            border-radius: 0.375rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: transparent;
+            border: none;
+            color: #9ca3af;
+        }
+
+        .lang-btn.active {
+            background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 100%);
+            color: white;
+        }
+
+        .lang-btn:hover:not(.active) {
+            color: #e4e4e7;
+        }
+
+        /* ========== TITLE GLOW EFFECT ========== */
+        section h2 {
+            position: relative;
+            z-index: 1;
+        }
+
+        section h2::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            height: 100px;
+            background: radial-gradient(ellipse, rgba(96, 165, 250, 0.25) 0%, rgba(167, 139, 250, 0.15) 30%, transparent 70%);
+            filter: blur(40px);
+            z-index: -1;
+            opacity: 0.8;
+        }
+
+        /* ========== GLASSMORPHISM ========== */
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 1rem;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 1.25rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(96, 165, 250, 0.3);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(96, 165, 250, 0.15);
+        }
+
+        /* ========== BUTTONS ========== */
+        .btn-primary {
+            background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 100%);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 0.75rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(96, 165, 250, 0.4);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 0.75rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(96, 165, 250, 0.4);
+            transform: translateY(-2px);
+        }
+
+        /* ========== ANIMATIONS ========== */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 1s ease-out;
+        }
+
+        /* ========== NAVIGATION ========== */
+        nav a {
+            position: relative;
+            color: #d1d5db;
+            transition: color 0.3s ease;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #60a5fa, #a78bfa);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #60a5fa;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* ========== PROCESS ICONS ========== */
+        .process-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, rgba(96, 165, 250, 0.1) 0%, rgba(167, 139, 250, 0.1) 100%);
+            border: 2px solid rgba(96, 165, 250, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .process-item:hover .process-icon {
+            background: linear-gradient(135deg, rgba(96, 165, 250, 0.2) 0%, rgba(167, 139, 250, 0.2) 100%);
+            border-color: rgba(96, 165, 250, 0.5);
+            transform: scale(1.1);
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 1.5rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+        }
+
+        /* ========== SCROLL BEHAVIOR ========== */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        section {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ========== SUBTITLE ROTATION ========== */
+        .subtitle-container {
+            position: relative;
+            min-height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .subtitle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+            width: 100%;
+            text-align: center;
+        }
+
+        .subtitle.active {
+            opacity: 1;
+            transform: translate(-50%, -50%);
+        }
+
+        .subtitle.fade-out {
+            opacity: 0;
+            transform: translate(-50%, calc(-50% - 10px));
+        }
+
+        .subtitle.fade-in {
+            opacity: 1;
+            transform: translate(-50%, -50%);
+        }
+
+        /* ========== CONTACT MODAL ========== */
+        .contact-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .contact-modal.active {
+            display: flex;
+        }
+
+        .contact-modal-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(8px);
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .contact-modal-content {
+            position: relative;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(96, 165, 250, 0.2);
+            border-radius: 1.5rem;
+            padding: 3rem 2rem;
+            max-width: 500px;
+            width: 100%;
+            animation: slideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 0.5rem;
+            padding: 0.5rem;
+            color: #9ca3af;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .modal-close:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #60a5fa;
+            transform: rotate(90deg);
+        }
+
+        .modal-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .modal-subtitle {
+            text-align: center;
+            color: #9ca3af;
+            margin-bottom: 2rem;
+            font-size: 0.95rem;
+        }
+
+        .contact-bubbles {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .contact-bubble {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 1rem;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+        }
+
+        .contact-bubble:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateX(8px);
+        }
+
+        .whatsapp-bubble:hover {
+            border-color: rgba(37, 211, 102, 0.5);
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.2);
+        }
+
+        .telegram-bubble:hover {
+            border-color: rgba(36, 161, 222, 0.5);
+            box-shadow: 0 10px 30px rgba(36, 161, 222, 0.2);
+        }
+
+        .email-bubble:hover {
+            border-color: rgba(96, 165, 250, 0.5);
+            box-shadow: 0 10px 30px rgba(96, 165, 250, 0.2);
+        }
+
+        .bubble-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-bubble .bubble-icon {
+            background: linear-gradient(135deg, rgba(37, 211, 102, 0.2), rgba(37, 211, 102, 0.1));
+            color: #25d366;
+        }
+
+        .telegram-bubble .bubble-icon {
+            background: linear-gradient(135deg, rgba(36, 161, 222, 0.2), rgba(36, 161, 222, 0.1));
+            color: #24a1de;
+        }
+
+        .email-bubble .bubble-icon {
+            background: linear-gradient(135deg, rgba(96, 165, 250, 0.2), rgba(96, 165, 250, 0.1));
+            color: #60a5fa;
+        }
+
+        .contact-bubble:hover .bubble-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .bubble-content {
+            flex: 1;
+        }
+
+        .bubble-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #e4e4e7;
+            margin-bottom: 0.25rem;
+        }
+
+        .bubble-description {
+            font-size: 0.875rem;
+            color: #9ca3af;
+        }
+
+        /* ========== RESPONSIVE MODAL ========== */
+        @media (max-width: 768px) {
+            .contact-modal-content {
+                padding: 2rem 1.5rem;
+            }
+
+            .modal-title {
+                font-size: 1.5rem;
+            }
+
+            .contact-bubble {
+                gap: 1rem;
+                padding: 1.25rem;
+            }
+
+            .bubble-icon {
+                width: 48px;
+                height: 48px;
+            }
+
+            .bubble-icon svg {
+                width: 24px;
+                height: 24px;
+            }
+        }
+
+        /* ========== SERVICE MODALS ========== */
+        .service-learn-more {
+            padding: 0.75rem 1.5rem;
+            background: linear-gradient(135deg, rgba(96, 165, 250, 0.15), rgba(167, 139, 250, 0.15));
+            border: 1px solid rgba(96, 165, 250, 0.3);
+            border-radius: 0.5rem;
+            color: #60a5fa;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .service-learn-more:hover {
+            background: linear-gradient(135deg, rgba(96, 165, 250, 0.25), rgba(167, 139, 250, 0.25));
+            border-color: rgba(96, 165, 250, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .service-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .service-modal.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .service-modal-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(4px);
+        }
+
+        .service-modal-content {
+            position: relative;
+            max-width: 600px;
+            width: 90%;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(96, 165, 250, 0.2);
+            border-radius: 1.5rem;
+            padding: 2.5rem;
+            transform: scale(0.95);
+            transition: transform 0.3s ease;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        .service-modal.active .service-modal-content {
+            transform: scale(1);
+        }
+
+        .service-modal-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-modal-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .service-modal-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .service-modal-body {
+            margin-bottom: 2rem;
+        }
+
+        .service-modal-body ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .service-modal-body li {
+            padding: 0.75rem 0;
+            padding-left: 1.75rem;
+            position: relative;
+            color: #cbd5e1;
+            line-height: 1.6;
+        }
+
+        .service-modal-body li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #60a5fa;
+            font-weight: bold;
+        }
+
+        .service-modal-close {
+            width: 100%;
+            padding: 0.875rem 1.5rem;
+            background: linear-gradient(135deg, rgba(96, 165, 250, 0.2), rgba(167, 139, 250, 0.2));
+            border: 1px solid rgba(96, 165, 250, 0.3);
+            border-radius: 0.75rem;
+            color: #60a5fa;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .service-modal-close:hover {
+            background: linear-gradient(135deg, rgba(96, 165, 250, 0.3), rgba(167, 139, 250, 0.3));
+            border-color: rgba(96, 165, 250, 0.5);
+        }
+
+        /* ========== HORIZONTAL SLIDER ========== */
+        #about-slider {
+            position: relative;
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            min-height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            padding: 3rem 1rem;
+        }
+
+        #about-text {
+            font-size: 1.25rem;
+            line-height: 1.8;
+            color: #e4e4e7;
+            font-weight: 300;
+            text-align: center;
+            opacity: 0;
+            transform: translateX(40px);
+            transition: transform 0.9s cubic-bezier(0.4, 0.0, 0.2, 1), opacity 0.9s cubic-bezier(0.4, 0.0, 0.2, 1);
+        }
+
+        #about-text.slide-in {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        #about-text.slide-out {
+            opacity: 0;
+            transform: translateX(-40px);
+        }
+
+        @media (max-width: 768px) {
+            #about-text {
+                font-size: 1.125rem;
+                line-height: 1.7;
+            }
+
+            #about-slider {
+                min-height: 160px;
+                padding: 2rem 0.5rem;
+            }
+        }
+
+        /* ========== FLOATING EXPERT BUTTON ========== */
+        .floating-expert-btn {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 1.5rem;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(96, 165, 250, 0.3);
+            border-radius: 3rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+        }
+
+        .floating-expert-btn:hover {
+            transform: translateY(-4px) scale(1.05);
+            border-color: rgba(96, 165, 250, 0.6);
+            box-shadow: 0 15px 50px rgba(96, 165, 250, 0.3);
+            background: rgba(15, 23, 42, 1);
+        }
+
+        .floating-expert-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .floating-expert-btn:hover .floating-expert-icon {
+            transform: rotate(360deg) scale(1.1);
+            box-shadow: 0 0 20px rgba(96, 165, 250, 0.6);
+        }
+
+        .floating-expert-text {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #e4e4e7;
+            white-space: nowrap;
+        }
+
+        /* Animation pulse subtile */
+        @keyframes pulse-expert {
+            0%, 100% {
+                box-shadow: 0 10px 40px rgba(96, 165, 250, 0.2);
+            }
+            50% {
+                box-shadow: 0 10px 40px rgba(96, 165, 250, 0.4);
+            }
+        }
+
+        .floating-expert-btn {
+            animation: pulse-expert 3s ease-in-out infinite;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .floating-expert-btn {
+                bottom: 1.5rem;
+                right: 1.5rem;
+                padding: 0.875rem 1.25rem;
+            }
+
+            .floating-expert-text {
+                font-size: 0.875rem;
+            }
+
+            .floating-expert-icon {
+                width: 36px;
+                height: 36px;
+                font-size: 1.25rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .floating-expert-text {
+                display: none;
+            }
+
+            .floating-expert-btn {
+                padding: 0.875rem;
+                border-radius: 50%;
+            }
+
+            .floating-expert-icon {
+                width: 48px;
+                height: 48px;
+            }
+        }
+
+        /* ========== RESULTS SECTION ========== */
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .result-card {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 1.25rem;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.4s ease;
+        }
+
+        .result-card:hover {
+            background: rgba(255, 255, 255, 0.04);
+            border-color: rgba(96, 165, 250, 0.3);
+            transform: translateY(-8px);
+        }
+
+        .result-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(135deg, rgba(96, 165, 250, 0.15), rgba(167, 139, 250, 0.15));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .result-icon svg {
+            width: 40px;
+            height: 40px;
+            color: #60a5fa;
+        }
+
+        /* Animations des icônes */
+        @keyframes spin-slow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% {
+                opacity: 1;
+                filter: drop-shadow(0 0 10px rgba(96, 165, 250, 0.3));
+            }
+            50% {
+                opacity: 0.8;
+                filter: drop-shadow(0 0 20px rgba(96, 165, 250, 0.6));
+            }
+        }
+
+        @keyframes bounce-slow {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes slide-up {
+            0%, 100% { transform: translateY(5px); }
+            50% { transform: translateY(-5px); }
+        }
+
+        .result-card:nth-child(1) .result-icon svg {
+            animation: spin-slow 4s linear infinite;
+        }
+
+        .result-card:nth-child(2) .result-icon svg {
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+
+        .result-card:nth-child(3) .result-icon svg {
+            animation: bounce-slow 3s ease-in-out infinite;
+        }
+
+        .result-card:nth-child(4) .result-icon svg {
+            animation: slide-up 2.5s ease-in-out infinite;
+        }
+
+        @keyframes rotate-pulse {
+            0%, 100% {
+                transform: rotate(0deg) scale(1);
+            }
+            25% {
+                transform: rotate(90deg) scale(1.1);
+            }
+            50% {
+                transform: rotate(180deg) scale(1);
+            }
+            75% {
+                transform: rotate(270deg) scale(1.1);
+            }
+        }
+
+        @keyframes squeeze {
+            0%, 100% {
+                transform: scaleY(1);
+            }
+            50% {
+                transform: scaleY(0.8) scaleX(1.1);
+            }
+        }
+
+        .result-card:nth-child(5) .result-icon svg {
+            animation: rotate-pulse 4s ease-in-out infinite;
+        }
+
+        .result-card:nth-child(6) .result-icon svg {
+            animation: squeeze 2s ease-in-out infinite;
+        }
+
+        .result-metric {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .result-label {
+            font-size: 1.125rem;
+            color: #cbd5e1;
+            font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+            .result-metric {
+                font-size: 2rem;
+            }
+
+            .result-icon {
+                width: 64px;
+                height: 64px;
+            }
+
+            .result-icon svg {
+                width: 32px;
+                height: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ========== CANVAS BACKGROUND 3D ========== -->
+    <canvas id="particle-canvas"></canvas>
+
+    <!-- ========== FLOATING EXPERT BUTTON ========== -->
+    <button class="floating-expert-btn open-contact-modal">
+        <div class="floating-expert-icon">I</div>
+        <span class="floating-expert-text" data-translate="float.expert">Parlez avec un expert</span>
+    </button>
+
+    <!-- ========== HEADER ========== -->
+    <header class="glass fixed top-0 left-0 right-0 z-50 py-4">
+        <div class="container mx-auto px-6">
+            <div class="flex items-center justify-between">
+                <!-- Logo -->
+                <div class="logo">iwox.ai</div>
+
+                <!-- Navigation -->
+                <nav class="hidden md:flex items-center gap-8">
+                    <a href="#accueil" class="text-sm font-medium" data-translate="nav.home">Accueil</a>
+                    <a href="#services" class="text-sm font-medium" data-translate="nav.services">Services</a>
+                    <a href="#apropos" class="text-sm font-medium" data-translate="nav.about">À propos</a>
+                    <a href="#contact" class="text-sm font-medium" data-translate="nav.contact">Contact</a>
+
+                    <!-- Language Switcher -->
+                    <div class="lang-switcher">
+                        <button class="lang-btn active" data-lang="fr">FR</button>
+                        <button class="lang-btn" data-lang="en">EN</button>
+                    </div>
+                </nav>
+
+                <!-- Mobile menu button -->
+                <button class="md:hidden text-white">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ========== HERO SECTION ========== -->
+    <section id="accueil" class="min-h-screen flex items-center justify-center pt-24 pb-20 px-6">
+        <div class="container mx-auto text-center max-w-5xl">
+            <div class="fade-in-up">
+                <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight" data-translate="hero.title">
+                    Transformez votre avenir<br>avec l'intelligence artificielle
+                </h1>
+
+                <div class="subtitle-container mb-12 max-w-3xl mx-auto">
+                    <p class="subtitle text-xl md:text-2xl text-gray-400 font-light active" data-translate="hero.subtitle1">
+                        Des solutions IA prêtes à être déployées immédiatement pour réduire vos tâches, optimiser vos opérations et faire évoluer votre business.
+                    </p>
+                    <p class="subtitle text-xl md:text-2xl text-gray-400 font-light" data-translate="hero.subtitle2">
+                        Solutions IA innovantes pour propulser votre entreprise vers l'excellence.
+                    </p>
+                    <p class="subtitle text-xl md:text-2xl text-gray-400 font-light" data-translate="hero.subtitle3">
+                        Des systèmes intelligents, fiables et autonomes pour accélérer votre croissance.
+                    </p>
+                </div>
+
+                <div class="flex justify-center items-center">
+                    <button class="btn-primary open-contact-modal" data-translate="hero.cta">Contactez-nous</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== CONTACT MODAL ========== -->
+    <div id="contactModal" class="contact-modal">
+        <div class="contact-modal-overlay" id="modalOverlay"></div>
+        <div class="contact-modal-content">
+            <button class="modal-close" id="closeModal">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+
+            <h3 class="modal-title" data-translate="modal.title">Contactez-nous</h3>
+            <p class="modal-subtitle" data-translate="modal.subtitle">Choisissez votre moyen de communication préféré</p>
+
+            <div class="contact-bubbles">
+                <!-- WhatsApp Bubble -->
+                <a href="https://wa.me/33602731139?text=Bonjour%2C%20je%20souhaite%20des%20informations%20sur%20vos%20solutions%20IA%20et%20automatisations."
+                   target="_blank"
+                   class="contact-bubble whatsapp-bubble">
+                    <div class="bubble-icon">
+                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                        </svg>
+                    </div>
+                    <div class="bubble-content">
+                        <h4 class="bubble-title" data-translate="modal.whatsapp.title">WhatsApp</h4>
+                        <p class="bubble-description" data-translate="modal.whatsapp.desc">Discussion instantanée</p>
+                    </div>
+                </a>
+
+                <!-- Telegram Bubble -->
+                <a href="https://t.me/IwoxBot?start=contact_ia"
+                   target="_blank"
+                   class="contact-bubble telegram-bubble">
+                    <div class="bubble-icon">
+                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+                        </svg>
+                    </div>
+                    <div class="bubble-content">
+                        <h4 class="bubble-title" data-translate="modal.telegram.title">Telegram</h4>
+                        <p class="bubble-description" data-translate="modal.telegram.desc">Chat avec notre bot</p>
+                    </div>
+                </a>
+
+                <!-- Email Bubble -->
+                <a href="mailto:contact.iwox@gmail.com?subject=Demande%20d'informations%20-%20IW0X.AI&body=Bonjour%2C%20je%20souhaite%20en%20savoir%20plus%20sur%20vos%20solutions%20IA."
+                   class="contact-bubble email-bubble">
+                    <div class="bubble-icon">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                        </svg>
+                    </div>
+                    <div class="bubble-content">
+                        <h4 class="bubble-title" data-translate="modal.email.title">Email</h4>
+                        <p class="bubble-description" data-translate="modal.email.desc">Contact direct</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== SERVICES SECTION ========== -->
+    <section id="services" class="py-24 px-6">
+        <div class="container mx-auto max-w-6xl">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4" data-translate="services.title">Nos Services</h2>
+                <p class="text-gray-400 text-lg" data-translate="services.subtitle">L'IA au service de votre croissance</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Service 1: Agents IA -->
+                <div class="glass-card p-8 text-center">
+                    <div class="w-16 h-16 mx-auto mb-6 bg-gradient-to-br from-blue-400 to-purple-400 rounded-2xl flex items-center justify-center">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-4" data-translate="services.ai.title">Agents IA</h3>
+                    <p class="text-gray-400 leading-relaxed" data-translate="services.ai.desc">
+                        Assistants intelligents autonomes pour automatiser vos tâches complexes
+                    </p>
+                    <button class="service-learn-more mt-6" data-modal="modal-agents" data-translate="services.learn-more">
+                        En savoir plus
+                    </button>
+                </div>
+
+                <!-- Service 2: Automatisation -->
+                <div class="glass-card p-8 text-center">
+                    <div class="w-16 h-16 mx-auto mb-6 bg-gradient-to-br from-purple-400 to-pink-400 rounded-2xl flex items-center justify-center">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-4" data-translate="services.automation.title">Automatisation</h3>
+                    <p class="text-gray-400 leading-relaxed" data-translate="services.automation.desc">
+                        Optimisez vos processus métier avec des workflows intelligents
+                    </p>
+                    <button class="service-learn-more mt-6" data-modal="modal-automation" data-translate="services.learn-more">
+                        En savoir plus
+                    </button>
+                </div>
+
+                <!-- Service 3: Intelligence des données -->
+                <div class="glass-card p-8 text-center">
+                    <div class="w-16 h-16 mx-auto mb-6 bg-gradient-to-br from-cyan-400 to-blue-400 rounded-2xl flex items-center justify-center">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-4" data-translate="services.data.title">Intelligence des données</h3>
+                    <p class="text-gray-400 leading-relaxed" data-translate="services.data.desc">
+                        Transformez vos données en insights stratégiques actionnables
+                    </p>
+                    <button class="service-learn-more mt-6" data-modal="modal-data" data-translate="services.learn-more">
+                        En savoir plus
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== PROCESS SECTION ========== -->
+    <section class="py-24 px-6">
+        <div class="container mx-auto max-w-6xl">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4" data-translate="process.title">Notre Process</h2>
+                <p class="text-gray-400 text-lg" data-translate="process.subtitle">Simple, efficace, transformateur</p>
+            </div>
+
+            <div class="grid md:grid-cols-4 gap-8">
+                <!-- Step 1 -->
+                <div class="process-item text-center">
+                    <div class="process-icon">
+                        <svg class="w-8 h-8 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                        </svg>
+                    </div>
+                    <h4 class="text-xl font-semibold mb-2" data-translate="process.step1">Analyse</h4>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="process-item text-center">
+                    <div class="process-icon">
+                        <svg class="w-8 h-8 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                        </svg>
+                    </div>
+                    <h4 class="text-xl font-semibold mb-2" data-translate="process.step2">Stratégie</h4>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="process-item text-center">
+                    <div class="process-icon">
+                        <svg class="w-8 h-8 text-pink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                        </svg>
+                    </div>
+                    <h4 class="text-xl font-semibold mb-2" data-translate="process.step3">Développement</h4>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="process-item text-center">
+                    <div class="process-icon">
+                        <svg class="w-8 h-8 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
+                        </svg>
+                    </div>
+                    <h4 class="text-xl font-semibold mb-2" data-translate="process.step4">Déploiement</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== NOS RÉSULTATS SECTION ========== -->
+    <section class="py-24 px-6">
+        <div class="container mx-auto max-w-6xl">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4" data-translate="results.title">Impact mesurable</h2>
+                <p class="text-gray-400 text-lg" data-translate="results.subtitle">Résultats concrets de nos déploiements IA</p>
+            </div>
+
+            <div class="results-grid">
+                <!-- Résultat 1: Temps économisé -->
+                <div class="result-card">
+                    <div class="result-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                    <div class="result-metric" data-translate="results.1.metric">250h</div>
+                    <p class="result-label" data-translate="results.1.label">Économisées par mois</p>
+                </div>
+
+                <!-- Résultat 2: Délai réduit -->
+                <div class="result-card">
+                    <div class="result-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                        </svg>
+                    </div>
+                    <div class="result-metric" data-translate="results.2.metric">2 sem → 3j</div>
+                    <p class="result-label" data-translate="results.2.label">Délai de traitement</p>
+                </div>
+
+                <!-- Résultat 3: Disponibilité -->
+                <div class="result-card">
+                    <div class="result-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                    <div class="result-metric" data-translate="results.3.metric">99.8%</div>
+                    <p class="result-label" data-translate="results.3.label">Disponibilité système</p>
+                </div>
+
+                <!-- Résultat 4: Agents déployés -->
+                <div class="result-card">
+                    <div class="result-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                        </svg>
+                    </div>
+                    <div class="result-metric" data-translate="results.4.metric">20+</div>
+                    <p class="result-label" data-translate="results.4.label">Agents IA déployés</p>
+                </div>
+
+                <!-- Résultat 5: Précision IA -->
+                <div class="result-card">
+                    <div class="result-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                        </svg>
+                    </div>
+                    <div class="result-metric" data-translate="results.5.metric">96%</div>
+                    <p class="result-label" data-translate="results.5.label">Précision des agents</p>
+                </div>
+
+                <!-- Résultat 6: ROI moyen -->
+                <div class="result-card">
+                    <div class="result-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+                        </svg>
+                    </div>
+                    <div class="result-metric" data-translate="results.6.metric">&lt; 6 mois</div>
+                    <p class="result-label" data-translate="results.6.label">Retour sur investissement</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== À PROPOS SECTION ========== -->
+    <section id="apropos" class="py-24 px-6">
+        <div class="container mx-auto max-w-4xl">
+            <div class="glass-card p-12 text-center">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6" data-translate="about.title">À propos d'iwox.ai</h2>
+
+                <!-- Horizontal Slider -->
+                <div id="about-slider">
+                    <div id="about-text"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== CTA FINAL SECTION ========== -->
+    <section id="contact" class="py-24 px-6">
+        <div class="container mx-auto max-w-4xl text-center">
+            <h2 class="text-4xl md:text-6xl font-bold mb-6" data-translate="cta.title">
+                Prêt à automatiser<br>votre business ?
+            </h2>
+            <p class="text-xl text-gray-400 mb-10 max-w-xl mx-auto" data-translate="cta.subtitle">
+                Nous transformons vos tâches en systèmes IA qui travaillent pour vous, 24/7.
+            </p>
+            <button class="btn-primary text-lg open-contact-modal" data-translate="cta.button">Contactez-nous</button>
+        </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="py-8 px-6 border-t border-gray-800">
+        <div class="container mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                <div class="logo text-xl">iwox.ai</div>
+
+                <div class="flex gap-6 text-sm text-gray-400">
+                    <a href="mentions-legales.html" class="hover:text-blue-400 transition-colors" data-translate="footer.legal">Mentions légales</a>
+                    <a href="politique-confidentialite.html" class="hover:text-blue-400 transition-colors" data-translate="footer.privacy">Politique de confidentialité</a>
+                    <a href="mailto:contact.iwox@gmail.com" class="hover:text-blue-400 transition-colors" data-translate="footer.contact">Contact</a>
+                </div>
+
+                <div class="text-sm text-gray-500">
+                    © 2025 iwox.ai - <span data-translate="footer.rights">Tous droits réservés</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ========== 3D PARTICLE NETWORK SCRIPT ========== -->
+    <script>
+        // ========== CONFIGURATION ==========
+        const canvas = document.getElementById('particle-canvas');
+        const ctx = canvas.getContext('2d');
+
+        let width = window.innerWidth;
+        let height = window.innerHeight;
+        let particles = [];
+        let mouseX = width / 2;
+        let mouseY = height / 2;
+
+        // Configuration du réseau de particules
+        const CONFIG = {
+            particleCount: 120,
+            particleSize: 2,
+            connectionDistance: 150,
+            mouseInteractionDistance: 200,
+            speed: 0.3,
+            depth: 400,
+            fov: 250,
+            colors: {
+                particle: { r: 96, g: 165, b: 250 },      // Bleu clair
+                connection: { r: 100, g: 180, b: 255 },   // Bleu cyan
+                glow: { r: 120, g: 200, b: 255 }          // Bleu lumineux
+            }
+        };
+
+        // ========== PARTICLE CLASS ==========
+        class Particle {
+            constructor() {
+                this.reset();
+                this.z = Math.random() * CONFIG.depth;
+            }
+
+            reset() {
+                this.x = Math.random() * width - width / 2;
+                this.y = Math.random() * height - height / 2;
+                this.z = Math.random() * CONFIG.depth;
+                this.vx = (Math.random() - 0.5) * CONFIG.speed;
+                this.vy = (Math.random() - 0.5) * CONFIG.speed;
+                this.vz = (Math.random() - 0.5) * CONFIG.speed;
+            }
+
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+                this.z += this.vz;
+
+                // Rebonds sur les bords
+                if (this.x < -width / 2 || this.x > width / 2) this.vx *= -1;
+                if (this.y < -height / 2 || this.y > height / 2) this.vy *= -1;
+                if (this.z < 0 || this.z > CONFIG.depth) this.vz *= -1;
+            }
+
+            project() {
+                const scale = CONFIG.fov / (CONFIG.fov + this.z);
+                return {
+                    x: this.x * scale + width / 2,
+                    y: this.y * scale + height / 2,
+                    scale: scale
+                };
+            }
+        }
+
+        // ========== INITIALIZATION ==========
+        function init() {
+            canvas.width = width;
+            canvas.height = height;
+
+            particles = [];
+            for (let i = 0; i < CONFIG.particleCount; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        // ========== RESIZE HANDLER ==========
+        function handleResize() {
+            width = window.innerWidth;
+            height = window.innerHeight;
+            canvas.width = width;
+            canvas.height = height;
+        }
+
+        window.addEventListener('resize', handleResize);
+
+        // ========== MOUSE TRACKING ==========
+        window.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        // ========== DRAW FUNCTIONS ==========
+        function drawParticle(projected, scale) {
+            const size = CONFIG.particleSize * scale;
+            const opacity = Math.max(0.3, scale);
+            const color = CONFIG.colors.particle;
+
+            // Glow effect
+            ctx.beginPath();
+            const gradient = ctx.createRadialGradient(
+                projected.x, projected.y, 0,
+                projected.x, projected.y, size * 3
+            );
+            gradient.addColorStop(0, `rgba(${color.r}, ${color.g}, ${color.b}, ${opacity * 0.8})`);
+            gradient.addColorStop(0.5, `rgba(${color.r}, ${color.g}, ${color.b}, ${opacity * 0.4})`);
+            gradient.addColorStop(1, `rgba(${color.r}, ${color.g}, ${color.b}, 0)`);
+            ctx.fillStyle = gradient;
+            ctx.arc(projected.x, projected.y, size * 3, 0, Math.PI * 2);
+            ctx.fill();
+
+            // Particle core
+            ctx.beginPath();
+            ctx.fillStyle = `rgba(${color.r + 50}, ${color.g + 50}, ${color.b + 50}, ${opacity})`;
+            ctx.arc(projected.x, projected.y, size, 0, Math.PI * 2);
+            ctx.fill();
+        }
+
+        function drawConnection(p1, p2, distance) {
+            const opacity = Math.max(0, 1 - distance / CONFIG.connectionDistance);
+            const color = CONFIG.colors.connection;
+
+            ctx.beginPath();
+            ctx.moveTo(p1.x, p1.y);
+            ctx.lineTo(p2.x, p2.y);
+            ctx.strokeStyle = `rgba(${color.r}, ${color.g}, ${color.b}, ${opacity * 0.3})`;
+            ctx.lineWidth = 0.5;
+            ctx.stroke();
+        }
+
+        // ========== ANIMATION LOOP ==========
+        function animate() {
+            // Clear with fade effect
+            ctx.fillStyle = 'rgba(5, 7, 16, 0.1)';
+            ctx.fillRect(0, 0, width, height);
+
+            // Update and project particles
+            const projectedParticles = [];
+            particles.forEach(particle => {
+                particle.update();
+                const projected = particle.project();
+                projectedParticles.push({
+                    particle,
+                    projected,
+                    scale: projected.scale
+                });
+            });
+
+            // Sort by depth for proper rendering
+            projectedParticles.sort((a, b) => a.particle.z - b.particle.z);
+
+            // Draw connections
+            for (let i = 0; i < projectedParticles.length; i++) {
+                const p1 = projectedParticles[i];
+
+                for (let j = i + 1; j < projectedParticles.length; j++) {
+                    const p2 = projectedParticles[j];
+
+                    const dx = p1.projected.x - p2.projected.x;
+                    const dy = p1.projected.y - p2.projected.y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < CONFIG.connectionDistance) {
+                        drawConnection(p1.projected, p2.projected, distance);
+                    }
+                }
+            }
+
+            // Draw particles
+            projectedParticles.forEach(({ projected, scale }) => {
+                drawParticle(projected, scale);
+            });
+
+            requestAnimationFrame(animate);
+        }
+
+        // ========== START ==========
+        init();
+        animate();
+    </script>
+
+    <!-- ========== SUBTITLE ROTATION SCRIPT ========== -->
+    <script>
+        // Configuration
+        const ROTATION_INTERVAL = 10000; // 10 secondes
+        const TRANSITION_DURATION = 1000; // 1 seconde pour la transition
+
+        let currentSubtitleIndex = 0;
+        const subtitles = document.querySelectorAll('.subtitle');
+        const totalSubtitles = subtitles.length;
+
+        function rotateSubtitles() {
+            // Retire la classe active du sous-titre actuel avec effet fade-out
+            subtitles[currentSubtitleIndex].classList.remove('active');
+            subtitles[currentSubtitleIndex].classList.add('fade-out');
+
+            // Calcule l'index du prochain sous-titre
+            currentSubtitleIndex = (currentSubtitleIndex + 1) % totalSubtitles;
+
+            // Attend que le fade-out soit terminé avant d'afficher le suivant
+            setTimeout(() => {
+                // Retire tous les fade-out
+                subtitles.forEach(subtitle => {
+                    subtitle.classList.remove('fade-out');
+                });
+
+                // Active le nouveau sous-titre
+                subtitles[currentSubtitleIndex].classList.add('active');
+            }, TRANSITION_DURATION);
+        }
+
+        // Démarre la rotation automatique
+        setInterval(rotateSubtitles, ROTATION_INTERVAL);
+    </script>
+
+    <!-- ========== CONTACT MODAL SCRIPT ========== -->
+    <script>
+        const contactModal = document.getElementById('contactModal');
+        const openModalBtns = document.querySelectorAll('.open-contact-modal');
+        const closeModalBtn = document.getElementById('closeModal');
+        const modalOverlay = document.getElementById('modalOverlay');
+
+        // Ouvrir le modal (pour tous les boutons avec la classe)
+        openModalBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                contactModal.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Empêche le scroll
+            });
+        });
+
+        // Fermer le modal avec le bouton X
+        closeModalBtn.addEventListener('click', () => {
+            contactModal.classList.remove('active');
+            document.body.style.overflow = ''; // Réactive le scroll
+        });
+
+        // Fermer le modal en cliquant sur l'overlay
+        modalOverlay.addEventListener('click', () => {
+            contactModal.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+
+        // Fermer le modal avec la touche Échap
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && contactModal.classList.contains('active')) {
+                contactModal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+    </script>
+
+    <!-- ========== HORIZONTAL SLIDER SCRIPT ========== -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            let currentIndex = 0;
+            window.aboutSliderCurrentIndex = 0; // Expose globally for language switcher
+            const aboutText = document.getElementById('about-text');
+            const phraseKeys = ['about.phrase1', 'about.phrase2', 'about.phrase3', 'about.phrase4', 'about.phrase5', 'about.phrase6', 'about.phrase7', 'about.phrase8'];
+
+            // Fonction pour obtenir la phrase actuelle dans la langue courante
+            function getCurrentPhrase(index, lang) {
+                const key = phraseKeys[index];
+                return translations[key] && translations[key][lang] ? translations[key][lang] : '';
+            }
+
+            // Fonction pour changer de phrase
+            function changePhrase() {
+                const currentLang = localStorage.getItem('preferredLanguage') || 'fr';
+
+                // Slide out (gauche)
+                aboutText.classList.remove('slide-in');
+                aboutText.classList.add('slide-out');
+
+                // Après l'animation de sortie, changer le texte et slide in
+                setTimeout(() => {
+                    // Passer à la phrase suivante
+                    currentIndex = (currentIndex + 1) % phraseKeys.length;
+                    window.aboutSliderCurrentIndex = currentIndex; // Update global
+                    aboutText.textContent = getCurrentPhrase(currentIndex, currentLang);
+
+                    // Retirer slide-out
+                    aboutText.classList.remove('slide-out');
+
+                    // Force reflow pour réinitialiser l'animation
+                    void aboutText.offsetHeight;
+
+                    // Utiliser requestAnimationFrame pour garantir le reflow
+                    requestAnimationFrame(() => {
+                        requestAnimationFrame(() => {
+                            aboutText.classList.add('slide-in');
+                        });
+                    });
+                }, 900);
+            }
+
+            // Initialiser avec la première phrase
+            if (aboutText) {
+                const currentLang = localStorage.getItem('preferredLanguage') || 'fr';
+                aboutText.textContent = getCurrentPhrase(0, currentLang);
+                // Slide in initial
+                setTimeout(() => {
+                    aboutText.classList.add('slide-in');
+                }, 100);
+            }
+
+            // Démarrer le slider automatique (toutes les 6 secondes)
+            setInterval(changePhrase, 6000);
+        });
+    </script>
+
+    <!-- ========== LANGUAGE SWITCHER SCRIPT ========== -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const langButtons = document.querySelectorAll('.lang-btn');
+            let currentLang = 'fr';
+
+            // Fonction pour changer la langue
+            function switchLanguage(lang) {
+                currentLang = lang;
+
+                // Mettre à jour les boutons actifs
+                langButtons.forEach(btn => {
+                    if (btn.getAttribute('data-lang') === lang) {
+                        btn.classList.add('active');
+                    } else {
+                        btn.classList.remove('active');
+                    }
+                });
+
+                // Traduire tous les éléments avec data-translate
+                const elements = document.querySelectorAll('[data-translate]');
+                elements.forEach(element => {
+                    const key = element.getAttribute('data-translate');
+                    if (translations[key] && translations[key][lang]) {
+                        // Utiliser innerHTML pour gérer les balises HTML (<br>, etc.)
+                        if (translations[key][lang].includes('<br>')) {
+                            element.innerHTML = translations[key][lang];
+                        } else {
+                            element.textContent = translations[key][lang];
+                        }
+                    }
+                });
+
+                // Mettre à jour le slider About avec la langue actuelle
+                const aboutText = document.getElementById('about-text');
+                if (aboutText && window.aboutSliderCurrentIndex !== undefined) {
+                    const phraseKeys = ['about.phrase1', 'about.phrase2', 'about.phrase3', 'about.phrase4', 'about.phrase5', 'about.phrase6', 'about.phrase7', 'about.phrase8'];
+                    const currentKey = phraseKeys[window.aboutSliderCurrentIndex];
+                    if (translations[currentKey] && translations[currentKey][lang]) {
+                        aboutText.textContent = translations[currentKey][lang];
+                    }
+                }
+
+                // Traduire les attributs (placeholders, etc.)
+                const placeholders = document.querySelectorAll('[data-translate-placeholder]');
+                placeholders.forEach(element => {
+                    const key = element.getAttribute('data-translate-placeholder');
+                    if (translations[key] && translations[key][lang]) {
+                        element.placeholder = translations[key][lang];
+                    }
+                });
+
+                // Sauvegarder la préférence
+                localStorage.setItem('preferredLanguage', lang);
+            }
+
+            // Événements sur les boutons
+            langButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const lang = btn.getAttribute('data-lang');
+                    switchLanguage(lang);
+                });
+            });
+
+            // Charger la langue préférée au démarrage
+            const savedLang = localStorage.getItem('preferredLanguage');
+            if (savedLang && savedLang !== 'fr') {
+                switchLanguage(savedLang);
+            }
+        });
+
+        // Dictionnaire de traductions
+        const translations = {
+            // Navigation
+            'nav.home': { fr: 'Accueil', en: 'Home' },
+            'nav.services': { fr: 'Services', en: 'Services' },
+            'nav.about': { fr: 'À propos', en: 'About' },
+            'nav.contact': { fr: 'Contact', en: 'Contact' },
+
+            // Hero section
+            'hero.title': {
+                fr: 'Transformez votre avenir<br>avec l\'intelligence artificielle',
+                en: 'Transform your future<br>with artificial intelligence'
+            },
+            'hero.cta': { fr: 'Contactez-nous', en: 'Contact us' },
+
+            // Services
+            'services.title': { fr: 'Nos Services', en: 'Our Services' },
+            'services.subtitle': { fr: 'L\'IA au service de votre croissance', en: 'AI for your growth' },
+            'services.ai.title': { fr: 'Agents IA', en: 'AI Agents' },
+            'services.ai.desc': {
+                fr: 'Assistants intelligents autonomes pour automatiser vos tâches complexes',
+                en: 'Autonomous intelligent assistants to automate your complex tasks'
+            },
+            'services.automation.title': { fr: 'Automatisation', en: 'Automation' },
+            'services.automation.desc': {
+                fr: 'Optimisez vos processus métier avec des workflows intelligents',
+                en: 'Optimize your business processes with intelligent workflows'
+            },
+            'services.data.title': { fr: 'Intelligence des données', en: 'Data Intelligence' },
+            'services.data.desc': {
+                fr: 'Transformez vos données en insights stratégiques actionnables',
+                en: 'Transform your data into actionable strategic insights'
+            },
+            'services.learn-more': { fr: 'En savoir plus', en: 'Learn more' },
+
+            // Process
+            'process.title': { fr: 'Notre Process', en: 'Our Process' },
+            'process.subtitle': { fr: 'Simple, efficace, transformateur', en: 'Simple, efficient, transformative' },
+            'process.step1': { fr: 'Analyse', en: 'Analysis' },
+            'process.step2': { fr: 'Stratégie', en: 'Strategy' },
+            'process.step3': { fr: 'Développement', en: 'Development' },
+            'process.step4': { fr: 'Déploiement', en: 'Deployment' },
+
+            // Results
+            'results.title': { fr: 'Impact mesurable', en: 'Measurable Impact' },
+            'results.subtitle': {
+                fr: 'Résultats concrets de nos déploiements IA',
+                en: 'Concrete results from our AI deployments'
+            },
+            'results.1.metric': { fr: '250h', en: '250h' },
+            'results.1.label': { fr: 'Économisées par mois', en: 'Saved per month' },
+            'results.2.metric': { fr: '2 sem → 3j', en: '2 wk → 3d' },
+            'results.2.label': { fr: 'Délai de traitement', en: 'Processing time' },
+            'results.3.metric': { fr: '99.8%', en: '99.8%' },
+            'results.3.label': { fr: 'Disponibilité système', en: 'System availability' },
+            'results.4.metric': { fr: '20+', en: '20+' },
+            'results.4.label': { fr: 'Agents IA déployés', en: 'AI Agents deployed' },
+            'results.5.metric': { fr: '96%', en: '96%' },
+            'results.5.label': { fr: 'Précision des agents', en: 'Agent accuracy' },
+            'results.6.metric': { fr: '< 6 mois', en: '< 6 months' },
+            'results.6.label': { fr: 'Retour sur investissement', en: 'Return on investment' },
+
+            // About
+            'about.title': { fr: 'À propos d\'iwox.ai', en: 'About iwox.ai' },
+            'about.phrase1': {
+                fr: 'IW0X.AI développe des solutions d\'intelligence artificielle capables d\'automatiser, optimiser et augmenter les performances de votre entreprise.',
+                en: 'IW0X.AI develops artificial intelligence solutions capable of automating, optimizing and boosting your company\'s performance.'
+            },
+            'about.phrase2': {
+                fr: 'De l\'intelligence artificielle qui s\'intègre en semaines. Des résultats qui se mesurent en mois.',
+                en: 'Artificial intelligence that integrates in weeks. Results that are measured in months.'
+            },
+            'about.phrase3': {
+                fr: 'IW0X.AI conçoit des agents IA et des workflows autonomes capables d\'exécuter vos tâches, analyser vos données et améliorer vos résultats.',
+                en: 'IW0X.AI designs AI agents and autonomous workflows capable of executing your tasks, analyzing your data and improving your results.'
+            },
+            'about.phrase4': {
+                fr: 'Architecture IA sur mesure. Construite pour durer. Déployée pour performer.',
+                en: 'Custom AI architecture. Built to last. Deployed to perform.'
+            },
+            'about.phrase5': {
+                fr: 'Nous utilisons l\'intelligence artificielle pour simplifier vos opérations, réduire vos charges et rendre votre business plus autonome.',
+                en: 'We use artificial intelligence to simplify your operations, reduce your costs and make your business more autonomous.'
+            },
+            'about.phrase6': {
+                fr: 'L\'IA qui exécute pendant que vous vous concentrez sur l\'essentiel : votre croissance.',
+                en: 'AI that executes while you focus on what matters: your growth.'
+            },
+            'about.phrase7': {
+                fr: 'Transformez vos données en décisions. Vos processus manuels en automatismes rentables.',
+                en: 'Transform your data into decisions. Your manual processes into profitable automations.'
+            },
+            'about.phrase8': {
+                fr: 'Votre équipe, augmentée par l\'IA. Vos résultats, multipliés par l\'automatisation.',
+                en: 'Your team, augmented by AI. Your results, multiplied by automation.'
+            },
+
+            // CTA
+            'cta.title': {
+                fr: 'Prêt à automatiser<br>votre business ?',
+                en: 'Ready to automate<br>your business?'
+            },
+            'cta.subtitle': {
+                fr: 'Nous transformons vos tâches en systèmes IA qui travaillent pour vous, 24/7.',
+                en: 'We transform your tasks into AI systems that work for you, 24/7.'
+            },
+            'cta.button': { fr: 'Contactez-nous', en: 'Contact us' },
+
+            // Footer
+            'footer.legal': { fr: 'Mentions légales', en: 'Legal Notice' },
+            'footer.privacy': { fr: 'Politique de confidentialité', en: 'Privacy Policy' },
+            'footer.contact': { fr: 'Contact', en: 'Contact' },
+            'footer.rights': { fr: 'Tous droits réservés', en: 'All rights reserved' },
+
+            // Contact Modal
+            'modal.title': { fr: 'Contactez-nous', en: 'Contact us' },
+            'modal.subtitle': {
+                fr: 'Choisissez votre moyen de communication préféré',
+                en: 'Choose your preferred communication method'
+            },
+            'modal.whatsapp.title': { fr: 'WhatsApp', en: 'WhatsApp' },
+            'modal.whatsapp.desc': { fr: 'Discussion instantanée', en: 'Instant chat' },
+            'modal.telegram.title': { fr: 'Telegram', en: 'Telegram' },
+            'modal.telegram.desc': { fr: 'Chat avec notre bot', en: 'Chat with our bot' },
+            'modal.email.title': { fr: 'Email', en: 'Email' },
+            'modal.email.desc': { fr: 'Contact direct', en: 'Direct contact' },
+
+            // Floating button
+            'float.expert': { fr: 'Parlez avec un expert', en: 'Talk to an expert' }
+        };
+    </script>
+
+    <!-- ========== SERVICE MODALS SCRIPT ========== -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Récupération de tous les boutons "En savoir plus"
+            const serviceLearnMoreBtns = document.querySelectorAll('.service-learn-more');
+
+            // Récupération de tous les modals
+            const serviceModals = document.querySelectorAll('.service-modal');
+
+            // Fonction pour ouvrir un modal
+            function openServiceModal(modalId) {
+                const modal = document.getElementById(modalId);
+                if (modal) {
+                    modal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                }
+            }
+
+            // Fonction pour fermer un modal
+            function closeServiceModal(modal) {
+                if (modal) {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            }
+
+            // Ajouter les événements sur les boutons "En savoir plus"
+            serviceLearnMoreBtns.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const modalId = btn.getAttribute('data-modal');
+                    openServiceModal(modalId);
+                });
+            });
+
+            // Gestion de la fermeture des modals
+            serviceModals.forEach(modal => {
+                // Fermer avec le bouton "Fermer"
+                const closeBtn = modal.querySelector('.service-modal-close');
+                if (closeBtn) {
+                    closeBtn.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        closeServiceModal(modal);
+                    });
+                }
+
+                // Fermer en cliquant sur l'overlay
+                const overlay = modal.querySelector('.service-modal-overlay');
+                if (overlay) {
+                    overlay.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        closeServiceModal(modal);
+                    });
+                }
+            });
+
+            // Fermer avec la touche Échap
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    serviceModals.forEach(modal => {
+                        if (modal.classList.contains('active')) {
+                            closeServiceModal(modal);
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+
+    <!-- ========== SERVICE MODALS ========== -->
+
+    <!-- Modal: Agents IA autonomes -->
+    <div id="modal-agents" class="service-modal">
+        <div class="service-modal-overlay"></div>
+        <div class="service-modal-content">
+            <div class="service-modal-header">
+                <div class="service-modal-icon bg-gradient-to-br from-blue-400 to-purple-400">
+                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                    </svg>
+                </div>
+                <h3 class="service-modal-title">Agents IA autonomes</h3>
+            </div>
+            <div class="service-modal-body">
+                <ul>
+                    <li>Assistants intelligents qui exécutent des tâches automatiquement.</li>
+                    <li>Gestion de messages, emails, support client et CRM.</li>
+                    <li>Automatisation des workflows internes.</li>
+                    <li>Réponse instantanée et actions autonomes.</li>
+                </ul>
+            </div>
+            <button class="service-modal-close">Fermer</button>
+        </div>
+    </div>
+
+    <!-- Modal: Automatisation de vos opérations -->
+    <div id="modal-automation" class="service-modal">
+        <div class="service-modal-overlay"></div>
+        <div class="service-modal-content">
+            <div class="service-modal-header">
+                <div class="service-modal-icon bg-gradient-to-br from-purple-400 to-pink-400">
+                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                    </svg>
+                </div>
+                <h3 class="service-modal-title">Automatisation de vos opérations</h3>
+            </div>
+            <div class="service-modal-body">
+                <ul>
+                    <li>Suppression des tâches répétitives du quotidien.</li>
+                    <li>Workflows connectés à vos outils (CRM, email, site).</li>
+                    <li>Réduction des erreurs humaines.</li>
+                    <li>Exécution 24/7, fiable et scalable.</li>
+                </ul>
+            </div>
+            <button class="service-modal-close">Fermer</button>
+        </div>
+    </div>
+
+    <!-- Modal: Intelligence de vos données -->
+    <div id="modal-data" class="service-modal">
+        <div class="service-modal-overlay"></div>
+        <div class="service-modal-content">
+            <div class="service-modal-header">
+                <div class="service-modal-icon bg-gradient-to-br from-cyan-400 to-blue-400">
+                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                    </svg>
+                </div>
+                <h3 class="service-modal-title">Intelligence de vos données</h3>
+            </div>
+            <div class="service-modal-body">
+                <ul>
+                    <li>Analyse automatique de vos données clés.</li>
+                    <li>Génération de rapports et insights.</li>
+                    <li>Alertes intelligentes en temps réel.</li>
+                    <li>Visualisation claire pour prise de décision rapide.</li>
+                </ul>
+            </div>
+            <button class="service-modal-close">Fermer</button>
+        </div>
+    </div>
+
+</body>
+</html>
