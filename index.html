@@ -2439,45 +2439,6 @@
                 return translations[key] && translations[key][lang] ? translations[key][lang] : '';
             }
 
-            // System prompt pour spécialiser le bot
-            function getSystemPrompt() {
-                const lang = getCurrentLanguage();
-                if (lang === 'fr') {
-                    return `Tu es IwoxBot, l'assistant IA spécialisé d'iwox.ai. Tu es un expert en automatisation d'entreprise et intelligence artificielle.
-
-RÈGLES STRICTES:
-- Tu réponds UNIQUEMENT aux questions concernant : l'automatisation, l'IA, les agents IA, les workflows intelligents, l'optimisation de processus, la transformation digitale, les solutions d'automatisation pour entreprises
-- Si la question N'EST PAS liée à l'automatisation ou l'IA d'entreprise, tu REFUSES poliment en disant : "Désolé, je suis spécialisé uniquement dans l'automatisation et l'intelligence artificielle pour les entreprises. Pourriez-vous me poser une question sur ces sujets ?"
-- Tu ne réponds JAMAIS à des questions générales comme les recettes, la météo, les actualités, etc.
-- Tu es concis, professionnel et orienté business
-- Tu mets en avant les services d'iwox.ai quand c'est pertinent
-- Tu peux suggérer de contacter l'équipe pour des questions techniques avancées
-
-Services d'iwox.ai:
-1. Agents IA autonomes - Assistants intelligents pour automatiser les tâches complexes
-2. Automatisation des opérations - Workflows intelligents pour optimiser les processus
-3. Intelligence des données - Transformation des données en insights actionnables
-
-Sois direct, technique mais accessible.`;
-                } else {
-                    return `You are IwoxBot, the specialized AI assistant for iwox.ai. You are an expert in business automation and artificial intelligence.
-
-STRICT RULES:
-- You ONLY answer questions about: automation, AI, AI agents, intelligent workflows, process optimization, digital transformation, business automation solutions
-- If the question is NOT related to automation or business AI, you politely REFUSE by saying: "Sorry, I specialize only in automation and artificial intelligence for businesses. Could you ask me a question on these topics?"
-- You NEVER answer general questions like recipes, weather, news, etc.
-- You are concise, professional and business-oriented
-- You highlight iwox.ai services when relevant
-- You can suggest contacting the team for advanced technical questions
-
-iwox.ai Services:
-1. Autonomous AI Agents - Intelligent assistants to automate complex tasks
-2. Operations Automation - Intelligent workflows to optimize processes
-3. Data Intelligence - Transform data into actionable insights
-
-Be direct, technical but accessible.`;
-                }
-            }
 
             // Open chatbot
             openChatbotBtn.addEventListener('click', function() {
@@ -2587,31 +2548,16 @@ Be direct, technical but accessible.`;
                 showTypingIndicator();
 
                 try {
-                    // Add user message to history
-                    conversationHistory.push({
-                        role: 'user',
-                        content: userMessage
-                    });
-
-                    // Prepare messages with system prompt
-                    const messages = [
-                        {
-                            role: 'system',
-                            content: getSystemPrompt()
-                        },
-                        ...conversationHistory
-                    ];
-
-                    // Call Backend API
+                    // Call Backend API — system prompt et modèle gérés côté serveur
                     const response = await fetch(BACKEND_API_URL, {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'
                         },
                         body: JSON.stringify({
-                            model: 'gpt-4o-mini',
-                            messages: messages,
-                            temperature: 0.7
+                            message: userMessage,
+                            history: conversationHistory,
+                            lang: getCurrentLanguage()
                         })
                     });
 
@@ -2622,11 +2568,9 @@ Be direct, technical but accessible.`;
                     const data = await response.json();
                     const botResponse = data.choices[0].message.content;
 
-                    // Add bot response to history
-                    conversationHistory.push({
-                        role: 'assistant',
-                        content: botResponse
-                    });
+                    // Mettre à jour l'historique local (user + assistant)
+                    conversationHistory.push({ role: 'user',      content: userMessage });
+                    conversationHistory.push({ role: 'assistant', content: botResponse });
 
                     removeTypingIndicator();
                     addBotMessage(botResponse);
