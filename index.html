@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>iwox.ai - Intelligence Artificielle de Nouvelle Génération</title>
+    <title>iwox.ai — Bots WhatsApp pour commerçants & e-commerce</title>
+    <meta name="description" content="Nous installons votre vendeur WhatsApp qui ne dort jamais : catalogue, panier, checkout, relances — 100% dans WhatsApp. Bots sur-mesure pour fleuristes, e-commerce et PME.">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1310,6 +1311,19 @@
         <span class="floating-expert-text" data-translate="float.expert">Parler avec IwoxBot</span>
     </button>
 
+    <!-- ========== STICKY WHATSAPP BUTTON ========== -->
+    <a href="https://wa.me/33602731139?text=Bonjour%2C%20je%20veux%20tester%20le%20bot%20WhatsApp%20de%20d%C3%A9mo"
+       target="_blank"
+       rel="noopener"
+       id="stickyWhatsApp"
+       aria-label="Essayer le bot démo sur WhatsApp"
+       style="position:fixed;bottom:24px;left:24px;z-index:60;display:inline-flex;align-items:center;gap:10px;padding:14px 20px;border-radius:999px;background:#25D366;color:#fff;font-weight:600;font-size:0.95rem;text-decoration:none;box-shadow:0 10px 30px rgba(37,211,102,0.35);transition:transform 0.2s ease, box-shadow 0.2s ease;">
+        <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        <span data-translate="sticky.whatsapp">Essayer le bot démo</span>
+    </a>
+
     <!-- ========== CHATBOT WIDGET ========== -->
     <div id="chatbotWidget" class="chatbot-widget">
         <div class="chatbot-header">
@@ -1405,23 +1419,26 @@
         <div class="container mx-auto text-center max-w-5xl">
             <div class="fade-in-up">
                 <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight" data-translate="hero.title">
-                    Transformez votre avenir<br>avec l'intelligence artificielle
+                    Votre vendeur WhatsApp<br>qui ne dort jamais
                 </h1>
 
                 <div class="subtitle-container mb-12 max-w-3xl mx-auto">
                     <p class="subtitle text-xl md:text-2xl text-gray-400 font-light active" data-translate="hero.subtitle1">
-                        Des solutions IA prêtes à être déployées immédiatement pour réduire vos tâches, optimiser vos opérations et faire évoluer votre business.
+                        Bots WhatsApp sur-mesure pour fleuristes, e-commerce et PME. Catalogue, panier, paiement, relances — 100% dans WhatsApp, 24/7.
                     </p>
                     <p class="subtitle text-xl md:text-2xl text-gray-400 font-light" data-translate="hero.subtitle2">
-                        Solutions IA innovantes pour propulser votre entreprise vers l'excellence.
+                        Réponse en moins de 5 secondes. Jamais un client perdu la nuit ou le week-end.
                     </p>
                     <p class="subtitle text-xl md:text-2xl text-gray-400 font-light" data-translate="hero.subtitle3">
-                        Des systèmes intelligents, fiables et autonomes pour accélérer votre croissance.
+                        Une plateforme multi-client : chaque bot vit dans son espace isolé, avec son catalogue, son ton et son dashboard.
                     </p>
                 </div>
 
-                <div class="flex justify-center items-center">
-                    <button class="btn-primary open-contact-modal" data-translate="hero.cta">Contactez-nous</button>
+                <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+                    <a href="https://wa.me/33602731139?text=Bonjour%2C%20je%20veux%20tester%20le%20bot%20WhatsApp%20de%20d%C3%A9mo"
+                       target="_blank"
+                       class="btn-primary" data-translate="hero.cta-demo">Essayer le bot démo</a>
+                    <button class="btn-primary open-contact-modal" style="background:transparent;border:1px solid rgba(255,255,255,0.2);" data-translate="hero.cta">Parler à un humain</button>
                 </div>
             </div>
         </div>
@@ -1456,21 +1473,6 @@
                     </div>
                 </a>
 
-                <!-- Telegram Bubble -->
-                <a href="https://t.me/IwoxBot?start=contact_ia"
-                   target="_blank"
-                   class="contact-bubble telegram-bubble">
-                    <div class="bubble-icon">
-                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
-                        </svg>
-                    </div>
-                    <div class="bubble-content">
-                        <h4 class="bubble-title" data-translate="modal.telegram.title">Telegram</h4>
-                        <p class="bubble-description" data-translate="modal.telegram.desc">Chat avec notre bot</p>
-                    </div>
-                </a>
-
                 <!-- Email Bubble -->
                 <a href="mailto:contact.iwox@gmail.com?subject=Demande%20d'informations%20-%20IW0X.AI&body=Bonjour%2C%20je%20souhaite%20en%20savoir%20plus%20sur%20vos%20solutions%20IA."
                    class="contact-bubble email-bubble">
@@ -1492,53 +1494,53 @@
     <section id="services" class="py-24 px-6">
         <div class="container mx-auto max-w-6xl">
             <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold mb-4" data-translate="services.title">Nos Services</h2>
-                <p class="text-gray-400 text-lg" data-translate="services.subtitle">L'IA au service de votre croissance</p>
+                <h2 class="text-4xl md:text-5xl font-bold mb-4" data-translate="services.title">3 bots WhatsApp, 3 usages</h2>
+                <p class="text-gray-400 text-lg" data-translate="services.subtitle">Choisissez celui qui correspond à votre business</p>
             </div>
 
             <div class="grid md:grid-cols-3 gap-8">
-                <!-- Service 1: Agents IA -->
+                <!-- Service 1: Bot Commerce -->
                 <div class="glass-card p-8 text-center">
-                    <div class="w-16 h-16 mx-auto mb-6 bg-gradient-to-br from-blue-400 to-purple-400 rounded-2xl flex items-center justify-center">
+                    <div class="w-16 h-16 mx-auto mb-6 bg-gradient-to-br from-green-400 to-emerald-500 rounded-2xl flex items-center justify-center">
                         <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
                         </svg>
                     </div>
-                    <h3 class="text-2xl font-semibold mb-4" data-translate="services.ai.title">Agents IA</h3>
+                    <h3 class="text-2xl font-semibold mb-4" data-translate="services.ai.title">Bot Commerce WhatsApp</h3>
                     <p class="text-gray-400 leading-relaxed" data-translate="services.ai.desc">
-                        Assistants intelligents autonomes pour automatiser vos tâches complexes
+                        Catalogue, panier, paiement, relances panier abandonné — tout dans WhatsApp
                     </p>
                     <button class="service-learn-more mt-6" data-modal="modal-agents" data-translate="services.learn-more">
                         En savoir plus
                     </button>
                 </div>
 
-                <!-- Service 2: Automatisation -->
+                <!-- Service 2: Bot Support & Handoff -->
                 <div class="glass-card p-8 text-center">
-                    <div class="w-16 h-16 mx-auto mb-6 bg-gradient-to-br from-purple-400 to-pink-400 rounded-2xl flex items-center justify-center">
+                    <div class="w-16 h-16 mx-auto mb-6 bg-gradient-to-br from-blue-400 to-cyan-400 rounded-2xl flex items-center justify-center">
                         <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
                         </svg>
                     </div>
-                    <h3 class="text-2xl font-semibold mb-4" data-translate="services.automation.title">Automatisation</h3>
+                    <h3 class="text-2xl font-semibold mb-4" data-translate="services.automation.title">Bot Support & Handoff</h3>
                     <p class="text-gray-400 leading-relaxed" data-translate="services.automation.desc">
-                        Optimisez vos processus métier avec des workflows intelligents
+                        FAQ automatique 24/7 + bascule vers un humain quand c'est nécessaire
                     </p>
                     <button class="service-learn-more mt-6" data-modal="modal-automation" data-translate="services.learn-more">
                         En savoir plus
                     </button>
                 </div>
 
-                <!-- Service 3: Intelligence des données -->
+                <!-- Service 3: Bot Lead & RDV -->
                 <div class="glass-card p-8 text-center">
-                    <div class="w-16 h-16 mx-auto mb-6 bg-gradient-to-br from-cyan-400 to-blue-400 rounded-2xl flex items-center justify-center">
+                    <div class="w-16 h-16 mx-auto mb-6 bg-gradient-to-br from-purple-400 to-pink-400 rounded-2xl flex items-center justify-center">
                         <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                         </svg>
                     </div>
-                    <h3 class="text-2xl font-semibold mb-4" data-translate="services.data.title">Intelligence des données</h3>
+                    <h3 class="text-2xl font-semibold mb-4" data-translate="services.data.title">Bot Lead & Prise de RDV</h3>
                     <p class="text-gray-400 leading-relaxed" data-translate="services.data.desc">
-                        Transformez vos données en insights stratégiques actionnables
+                        Qualifie vos prospects, prend les RDV et pousse dans votre CRM automatiquement
                     </p>
                     <button class="service-learn-more mt-6" data-modal="modal-data" data-translate="services.learn-more">
                         En savoir plus
@@ -1552,49 +1554,53 @@
     <section class="py-24 px-6">
         <div class="container mx-auto max-w-6xl">
             <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold mb-4" data-translate="process.title">Notre Process</h2>
-                <p class="text-gray-400 text-lg" data-translate="process.subtitle">Simple, efficace, transformateur</p>
+                <h2 class="text-4xl md:text-5xl font-bold mb-4" data-translate="process.title">De zéro à bot live en 4 étapes</h2>
+                <p class="text-gray-400 text-lg" data-translate="process.subtitle">Généralement 2 à 4 semaines selon votre catalogue</p>
             </div>
 
             <div class="grid md:grid-cols-4 gap-8">
-                <!-- Step 1 -->
+                <!-- Step 1 : Connexion WhatsApp Business -->
                 <div class="process-item text-center">
                     <div class="process-icon">
-                        <svg class="w-8 h-8 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                        <svg class="w-8 h-8 text-green-400" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/>
                         </svg>
                     </div>
-                    <h4 class="text-xl font-semibold mb-2" data-translate="process.step1">Analyse</h4>
+                    <h4 class="text-xl font-semibold mb-2" data-translate="process.step1">1. Connexion WhatsApp Business</h4>
+                    <p class="text-gray-400 text-sm" data-translate="process.step1.desc">Numéro pro + vérification Meta. On s'occupe de tout.</p>
                 </div>
 
-                <!-- Step 2 -->
+                <!-- Step 2 : Import catalogue -->
                 <div class="process-item text-center">
                     <div class="process-icon">
-                        <svg class="w-8 h-8 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                        <svg class="w-8 h-8 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
                         </svg>
                     </div>
-                    <h4 class="text-xl font-semibold mb-2" data-translate="process.step2">Stratégie</h4>
+                    <h4 class="text-xl font-semibold mb-2" data-translate="process.step2">2. Import catalogue</h4>
+                    <p class="text-gray-400 text-sm" data-translate="process.step2.desc">Shopify, WooCommerce, CSV, Airtable. Sync automatique.</p>
                 </div>
 
-                <!-- Step 3 -->
+                <!-- Step 3 : Entraînement -->
                 <div class="process-item text-center">
                     <div class="process-icon">
-                        <svg class="w-8 h-8 text-pink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                        <svg class="w-8 h-8 text-teal-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
                         </svg>
                     </div>
-                    <h4 class="text-xl font-semibold mb-2" data-translate="process.step3">Développement</h4>
+                    <h4 class="text-xl font-semibold mb-2" data-translate="process.step3">3. Entraînement</h4>
+                    <p class="text-gray-400 text-sm" data-translate="process.step3.desc">Ton de marque, FAQ, règles métier — votre bot, pas un ChatGPT générique.</p>
                 </div>
 
-                <!-- Step 4 -->
+                <!-- Step 4 : Go live -->
                 <div class="process-item text-center">
                     <div class="process-icon">
-                        <svg class="w-8 h-8 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
+                        <svg class="w-8 h-8 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                         </svg>
                     </div>
-                    <h4 class="text-xl font-semibold mb-2" data-translate="process.step4">Déploiement</h4>
+                    <h4 class="text-xl font-semibold mb-2" data-translate="process.step4">4. Go live</h4>
+                    <p class="text-gray-400 text-sm" data-translate="process.step4.desc">Dashboard temps réel, support continu, itérations hebdo.</p>
                 </div>
             </div>
         </div>
@@ -1604,76 +1610,306 @@
     <section class="py-24 px-6">
         <div class="container mx-auto max-w-6xl">
             <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold mb-4" data-translate="results.title">Impact mesurable</h2>
-                <p class="text-gray-400 text-lg" data-translate="results.subtitle">Résultats concrets de nos déploiements IA</p>
+                <h2 class="text-4xl md:text-5xl font-bold mb-4" data-translate="results.title">Ce que ça change concrètement</h2>
+                <p class="text-gray-400 text-lg" data-translate="results.subtitle">Chiffres mesurés chez nos clients en production</p>
             </div>
 
             <div class="results-grid">
-                <!-- Résultat 1: Temps économisé -->
+                <!-- Résultat 1: Temps de réponse -->
                 <div class="result-card">
                     <div class="result-icon">
                         <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
                         </svg>
                     </div>
-                    <div class="result-metric" data-translate="results.1.metric">250h</div>
-                    <p class="result-label" data-translate="results.1.label">Économisées par mois</p>
+                    <div class="result-metric" data-translate="results.1.metric">&lt; 5 sec</div>
+                    <p class="result-label" data-translate="results.1.label">Temps de réponse moyen</p>
                 </div>
 
-                <!-- Résultat 2: Délai réduit -->
-                <div class="result-card">
-                    <div class="result-icon">
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
-                        </svg>
-                    </div>
-                    <div class="result-metric" data-translate="results.2.metric">2 sem → 3j</div>
-                    <p class="result-label" data-translate="results.2.label">Délai de traitement</p>
-                </div>
-
-                <!-- Résultat 3: Disponibilité -->
-                <div class="result-card">
-                    <div class="result-icon">
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                        </svg>
-                    </div>
-                    <div class="result-metric" data-translate="results.3.metric">99.8%</div>
-                    <p class="result-label" data-translate="results.3.label">Disponibilité système</p>
-                </div>
-
-                <!-- Résultat 4: Agents déployés -->
-                <div class="result-card">
-                    <div class="result-icon">
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-                        </svg>
-                    </div>
-                    <div class="result-metric" data-translate="results.4.metric">20+</div>
-                    <p class="result-label" data-translate="results.4.label">Agents IA déployés</p>
-                </div>
-
-                <!-- Résultat 5: Précision IA -->
-                <div class="result-card">
-                    <div class="result-icon">
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
-                        </svg>
-                    </div>
-                    <div class="result-metric" data-translate="results.5.metric">96%</div>
-                    <p class="result-label" data-translate="results.5.label">Précision des agents</p>
-                </div>
-
-                <!-- Résultat 6: ROI moyen -->
+                <!-- Résultat 2: Conversion -->
                 <div class="result-card">
                     <div class="result-icon">
                         <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
                         </svg>
                     </div>
-                    <div class="result-metric" data-translate="results.6.metric">&lt; 6 mois</div>
-                    <p class="result-label" data-translate="results.6.label">Retour sur investissement</p>
+                    <div class="result-metric" data-translate="results.2.metric">+40%</div>
+                    <p class="result-label" data-translate="results.2.label">Conversion vs site web</p>
                 </div>
+
+                <!-- Résultat 3: 24/7 -->
+                <div class="result-card">
+                    <div class="result-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                    <div class="result-metric" data-translate="results.3.metric">24/7</div>
+                    <p class="result-label" data-translate="results.3.label">Zéro message manqué la nuit</p>
+                </div>
+
+                <!-- Résultat 4: Panier récupéré -->
+                <div class="result-card">
+                    <div class="result-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
+                        </svg>
+                    </div>
+                    <div class="result-metric" data-translate="results.4.metric">~30%</div>
+                    <p class="result-label" data-translate="results.4.label">Paniers abandonnés récupérés</p>
+                </div>
+
+                <!-- Résultat 5: Délai de mise en prod -->
+                <div class="result-card">
+                    <div class="result-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                        </svg>
+                    </div>
+                    <div class="result-metric" data-translate="results.5.metric">2–4 sem</div>
+                    <p class="result-label" data-translate="results.5.label">Du kick-off au go live</p>
+                </div>
+
+                <!-- Résultat 6: ROI -->
+                <div class="result-card">
+                    <div class="result-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                    <div class="result-metric" data-translate="results.6.metric">&lt; 3 mois</div>
+                    <p class="result-label" data-translate="results.6.label">ROI pour un commerce actif</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== POUR QUI C'EST FAIT (multi-tenant) ========== -->
+    <section id="cas-client" class="py-24 px-6">
+        <div class="container mx-auto max-w-6xl">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4" data-translate="case.title">Pour qui c'est fait</h2>
+                <p class="text-gray-400 text-lg" data-translate="case.subtitle">Un bot, votre marque — isolé des autres clients, 100% à vous</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Typologie 1 : Commerce produit -->
+                <div class="glass-card p-8">
+                    <div class="w-14 h-14 mb-5 rounded-xl bg-gradient-to-br from-green-400 to-emerald-500 flex items-center justify-center">
+                        <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3" data-translate="case.type1.title">Commerce produit</h3>
+                    <p class="text-gray-400 text-sm mb-4 leading-relaxed" data-translate="case.type1.desc">
+                        Fleuriste, mode, cosmétique, food, artisanat. Vos clients commandent directement dans WhatsApp : catalogue, panier, paiement, livraison.
+                    </p>
+                    <ul class="text-sm text-gray-500 space-y-1" data-translate="case.type1.examples">
+                        <li>Exemples : bouquets, vêtements, cosmétiques, pâtisserie…</li>
+                    </ul>
+                </div>
+
+                <!-- Typologie 2 : Service & RDV -->
+                <div class="glass-card p-8">
+                    <div class="w-14 h-14 mb-5 rounded-xl bg-gradient-to-br from-blue-400 to-cyan-400 flex items-center justify-center">
+                        <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3" data-translate="case.type2.title">Service &amp; RDV</h3>
+                    <p class="text-gray-400 text-sm mb-4 leading-relaxed" data-translate="case.type2.desc">
+                        Coachs, consultants, immobilier, services à domicile. Le bot qualifie, prend les RDV, pousse dans votre CRM.
+                    </p>
+                    <ul class="text-sm text-gray-500 space-y-1" data-translate="case.type2.examples">
+                        <li>Exemples : coach sportif, agent immobilier, artisan, thérapeute…</li>
+                    </ul>
+                </div>
+
+                <!-- Typologie 3 : Support & SaaS -->
+                <div class="glass-card p-8">
+                    <div class="w-14 h-14 mb-5 rounded-xl bg-gradient-to-br from-purple-400 to-pink-400 flex items-center justify-center">
+                        <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3" data-translate="case.type3.title">Support &amp; SaaS</h3>
+                    <p class="text-gray-400 text-sm mb-4 leading-relaxed" data-translate="case.type3.desc">
+                        Équipes support surchargées, SaaS, formateurs. FAQ instantanée + bascule humaine dans Chatwoot.
+                    </p>
+                    <ul class="text-sm text-gray-500 space-y-1" data-translate="case.type3.examples">
+                        <li>Exemples : support SaaS, école en ligne, agence, marketplace…</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Bandeau multi-tenant -->
+            <div class="glass-card p-6 md:p-8 mt-12 text-center">
+                <p class="text-lg text-gray-300" data-translate="case.multitenant">
+                    <span class="text-green-400 font-semibold">Architecture multi-tenant.</span>
+                    Chaque client a son espace isolé — catalogue, conversations, dashboard, identité — sans croisement avec les autres.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== PRICING SECTION ========== -->
+    <section id="pricing" class="py-24 px-6">
+        <div class="container mx-auto max-w-6xl">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4" data-translate="pricing.title">Combien ça coûte</h2>
+                <p class="text-gray-400 text-lg" data-translate="pricing.subtitle">Prix indicatifs, ajustables selon votre volume et vos intégrations</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Starter -->
+                <div class="glass-card p-8 flex flex-col">
+                    <h3 class="text-2xl font-semibold mb-2" data-translate="pricing.starter.name">Starter</h3>
+                    <p class="text-gray-400 text-sm mb-6" data-translate="pricing.starter.target">TPE, petit commerce, début en ligne</p>
+                    <div class="mb-6">
+                        <div class="text-4xl font-bold" data-translate="pricing.starter.setup">1 500 €</div>
+                        <p class="text-xs text-gray-500 mt-1" data-translate="pricing.starter.setup-label">Installation</p>
+                    </div>
+                    <div class="mb-6">
+                        <div class="text-2xl font-semibold text-green-400" data-translate="pricing.starter.monthly">+ 150 €/mois</div>
+                        <p class="text-xs text-gray-500 mt-1" data-translate="pricing.starter.monthly-label">Hébergement, maintenance, support</p>
+                    </div>
+                    <ul class="text-sm text-gray-400 space-y-2 mb-8 flex-grow">
+                        <li data-translate="pricing.starter.f1">✓ FAQ automatique 24/7</li>
+                        <li data-translate="pricing.starter.f2">✓ 1 catalogue (max 50 produits)</li>
+                        <li data-translate="pricing.starter.f3">✓ Handoff humain</li>
+                        <li data-translate="pricing.starter.f4">✓ Support email</li>
+                    </ul>
+                    <button class="btn-primary open-contact-modal w-full" data-translate="pricing.cta">Démarrer</button>
+                </div>
+
+                <!-- Commerce (featured) -->
+                <div class="glass-card p-8 flex flex-col relative" style="border:1px solid rgba(74,222,128,0.35);">
+                    <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full text-xs font-semibold bg-gradient-to-r from-green-400 to-emerald-500 text-black" data-translate="pricing.popular">Le plus populaire</div>
+                    <h3 class="text-2xl font-semibold mb-2" data-translate="pricing.commerce.name">Commerce</h3>
+                    <p class="text-gray-400 text-sm mb-6" data-translate="pricing.commerce.target">E-commerce actif, &gt; 50 DM / jour</p>
+                    <div class="mb-6">
+                        <div class="text-4xl font-bold" data-translate="pricing.commerce.setup">3 500 €</div>
+                        <p class="text-xs text-gray-500 mt-1" data-translate="pricing.commerce.setup-label">Installation</p>
+                    </div>
+                    <div class="mb-6">
+                        <div class="text-2xl font-semibold text-green-400" data-translate="pricing.commerce.monthly">+ 350 €/mois</div>
+                        <p class="text-xs text-gray-500 mt-1" data-translate="pricing.commerce.monthly-label">Hébergement, maintenance, itérations</p>
+                    </div>
+                    <ul class="text-sm text-gray-400 space-y-2 mb-8 flex-grow">
+                        <li data-translate="pricing.commerce.f1">✓ Tout Starter, plus :</li>
+                        <li data-translate="pricing.commerce.f2">✓ Catalogue illimité + sync Shopify</li>
+                        <li data-translate="pricing.commerce.f3">✓ Panier + checkout + paiement</li>
+                        <li data-translate="pricing.commerce.f4">✓ Relances panier abandonné</li>
+                        <li data-translate="pricing.commerce.f5">✓ Dashboard admin temps réel</li>
+                    </ul>
+                    <button class="btn-primary open-contact-modal w-full" data-translate="pricing.cta">Démarrer</button>
+                </div>
+
+                <!-- Sur-mesure -->
+                <div class="glass-card p-8 flex flex-col">
+                    <h3 class="text-2xl font-semibold mb-2" data-translate="pricing.custom.name">Sur-mesure</h3>
+                    <p class="text-gray-400 text-sm mb-6" data-translate="pricing.custom.target">Multi-boutique, SaaS, intégrations complexes</p>
+                    <div class="mb-6">
+                        <div class="text-4xl font-bold" data-translate="pricing.custom.setup">Sur devis</div>
+                        <p class="text-xs text-gray-500 mt-1" data-translate="pricing.custom.setup-label">Scope défini ensemble</p>
+                    </div>
+                    <div class="mb-6">
+                        <div class="text-2xl font-semibold text-green-400" data-translate="pricing.custom.monthly">—</div>
+                        <p class="text-xs text-gray-500 mt-1" data-translate="pricing.custom.monthly-label">Selon volume et SLA</p>
+                    </div>
+                    <ul class="text-sm text-gray-400 space-y-2 mb-8 flex-grow">
+                        <li data-translate="pricing.custom.f1">✓ Architecture multi-tenant</li>
+                        <li data-translate="pricing.custom.f2">✓ Intégrations CRM, ERP, custom</li>
+                        <li data-translate="pricing.custom.f3">✓ SLA dédié</li>
+                        <li data-translate="pricing.custom.f4">✓ Accompagnement équipe</li>
+                    </ul>
+                    <button class="btn-primary open-contact-modal w-full" data-translate="pricing.cta.custom">En parler</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FAQ SECTION ========== -->
+    <section id="faq" class="py-24 px-6">
+        <div class="container mx-auto max-w-3xl">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4" data-translate="faq.title">Questions fréquentes</h2>
+                <p class="text-gray-400 text-lg" data-translate="faq.subtitle">Les objections qu'on nous pose chaque semaine</p>
+            </div>
+
+            <div class="space-y-4">
+                <details class="glass-card p-6 cursor-pointer group">
+                    <summary class="flex justify-between items-center font-semibold text-lg list-none">
+                        <span data-translate="faq.q1">Il faut un numéro WhatsApp Business séparé ?</span>
+                        <span class="ml-4 text-green-400 group-open:rotate-180 transition-transform">▼</span>
+                    </summary>
+                    <p class="mt-4 text-gray-400 leading-relaxed" data-translate="faq.a1">Oui, un numéro dédié (jamais celui de votre mobile perso). On vous aide à le mettre en place : soit vous en prenez un nouveau, soit on migre un numéro existant. Compte WhatsApp Business API officiel via Meta — pas de contournement, 100% conforme.</p>
+                </details>
+
+                <details class="glass-card p-6 cursor-pointer group">
+                    <summary class="flex justify-between items-center font-semibold text-lg list-none">
+                        <span data-translate="faq.q2">Combien de temps pour que Meta approuve le compte ?</span>
+                        <span class="ml-4 text-green-400 group-open:rotate-180 transition-transform">▼</span>
+                    </summary>
+                    <p class="mt-4 text-gray-400 leading-relaxed" data-translate="faq.a2">En moyenne 3 à 7 jours ouvrés pour la vérification du business par Meta. On prépare le dossier avec vous pour maximiser les chances de validation au premier coup.</p>
+                </details>
+
+                <details class="glass-card p-6 cursor-pointer group">
+                    <summary class="flex justify-between items-center font-semibold text-lg list-none">
+                        <span data-translate="faq.q3">Ça marche avec Shopify / WooCommerce ?</span>
+                        <span class="ml-4 text-green-400 group-open:rotate-180 transition-transform">▼</span>
+                    </summary>
+                    <p class="mt-4 text-gray-400 leading-relaxed" data-translate="faq.a3">Oui. Sync automatique du catalogue (produits, stock, prix, images) toutes les 6h par défaut, ou en temps réel via webhooks. On gère aussi Airtable, Notion, Google Sheets et CSV pour les catalogues plus simples.</p>
+                </details>
+
+                <details class="glass-card p-6 cursor-pointer group">
+                    <summary class="flex justify-between items-center font-semibold text-lg list-none">
+                        <span data-translate="faq.q4">Et le RGPD ?</span>
+                        <span class="ml-4 text-green-400 group-open:rotate-180 transition-transform">▼</span>
+                    </summary>
+                    <p class="mt-4 text-gray-400 leading-relaxed" data-translate="faq.a4">Données hébergées en Europe (Supabase EU-West). Contrat de sous-traitance fourni, consentement explicite côté client, droit à l'oubli en 1 clic depuis le dashboard. Mentions légales et politique de confidentialité conformes.</p>
+                </details>
+
+                <details class="glass-card p-6 cursor-pointer group">
+                    <summary class="flex justify-between items-center font-semibold text-lg list-none">
+                        <span data-translate="faq.q5">Combien de temps pour être en ligne ?</span>
+                        <span class="ml-4 text-green-400 group-open:rotate-180 transition-transform">▼</span>
+                    </summary>
+                    <p class="mt-4 text-gray-400 leading-relaxed" data-translate="faq.a5">2 à 4 semaines en moyenne selon la taille de votre catalogue et la complexité des règles métier. Pour un Starter simple, parfois 1 semaine suffit.</p>
+                </details>
+
+                <details class="glass-card p-6 cursor-pointer group">
+                    <summary class="flex justify-between items-center font-semibold text-lg list-none">
+                        <span data-translate="faq.q6">Qui possède le bot et le numéro ?</span>
+                        <span class="ml-4 text-green-400 group-open:rotate-180 transition-transform">▼</span>
+                    </summary>
+                    <p class="mt-4 text-gray-400 leading-relaxed" data-translate="faq.a6">Vous. Le numéro WhatsApp Business est à votre nom. Si vous arrêtez un jour, vous gardez numéro, historique de conversations et base clients. Pas de verrouillage contractuel.</p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== INTÉGRATIONS SECTION ========== -->
+    <section id="integrations" class="py-24 px-6">
+        <div class="container mx-auto max-w-6xl">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4" data-translate="integrations.title">Intégrations natives</h2>
+                <p class="text-gray-400 text-lg" data-translate="integrations.subtitle">La stack qu'on utilise, et qu'on connecte à la vôtre</p>
+            </div>
+
+            <div class="flex flex-wrap justify-center items-center gap-4">
+                <div class="glass-card px-5 py-3 text-sm font-semibold">WhatsApp Business API</div>
+                <div class="glass-card px-5 py-3 text-sm font-semibold">Meta</div>
+                <div class="glass-card px-5 py-3 text-sm font-semibold">Shopify</div>
+                <div class="glass-card px-5 py-3 text-sm font-semibold">WooCommerce</div>
+                <div class="glass-card px-5 py-3 text-sm font-semibold">Chatwoot</div>
+                <div class="glass-card px-5 py-3 text-sm font-semibold">n8n</div>
+                <div class="glass-card px-5 py-3 text-sm font-semibold">Supabase</div>
+                <div class="glass-card px-5 py-3 text-sm font-semibold">Stripe</div>
+                <div class="glass-card px-5 py-3 text-sm font-semibold">Google Calendar</div>
+                <div class="glass-card px-5 py-3 text-sm font-semibold">HubSpot</div>
+                <div class="glass-card px-5 py-3 text-sm font-semibold">Notion</div>
+                <div class="glass-card px-5 py-3 text-sm font-semibold">Airtable</div>
             </div>
         </div>
     </section>
@@ -1682,12 +1918,16 @@
     <section id="apropos" class="py-24 px-6">
         <div class="container mx-auto max-w-4xl">
             <div class="glass-card p-12 text-center">
-                <h2 class="text-4xl md:text-5xl font-bold mb-6" data-translate="about.title">À propos d'iwox.ai</h2>
-
-                <!-- Horizontal Slider -->
-                <div id="about-slider">
-                    <div id="about-text"></div>
-                </div>
+                <h2 class="text-4xl md:text-5xl font-bold mb-6" data-translate="about.title">Qui est derrière iwox.ai</h2>
+                <p class="text-lg md:text-xl text-gray-300 mb-4 leading-relaxed" data-translate="about.p1">
+                    Je suis Marc, fondateur d'iwox.ai. On construit des bots WhatsApp en production pour des commerçants, des prestataires de services et des SaaS — sur une plateforme multi-tenant pensée pour passer à l'échelle.
+                </p>
+                <p class="text-lg md:text-xl text-gray-300 mb-4 leading-relaxed" data-translate="about.p2">
+                    Pas un ChatGPT générique qu'on plug et qu'on oublie. Un vendeur digital qui connaît vos produits, votre ton, vos règles — et qui reste isolé, à vous, dans son espace dédié.
+                </p>
+                <p class="text-lg md:text-xl text-green-400 font-semibold" data-translate="about.p3">
+                    Le prochain bot déployé, ce sera peut-être le vôtre.
+                </p>
             </div>
         </div>
     </section>
@@ -1696,12 +1936,12 @@
     <section id="contact" class="py-24 px-6">
         <div class="container mx-auto max-w-4xl text-center">
             <h2 class="text-4xl md:text-6xl font-bold mb-6" data-translate="cta.title">
-                Prêt à automatiser<br>votre business ?
+                Prêt à lancer<br>votre bot WhatsApp ?
             </h2>
             <p class="text-xl text-gray-400 mb-10 max-w-xl mx-auto" data-translate="cta.subtitle">
-                Nous transformons vos tâches en systèmes IA qui travaillent pour vous, 24/7.
+                Un bot qui vend, qui répond et qui travaille pour vous 24/7 — dans WhatsApp, pas sur un site que personne n'ouvre.
             </p>
-            <button class="btn-primary text-lg open-contact-modal" data-translate="cta.button">Contactez-nous</button>
+            <button class="btn-primary text-lg open-contact-modal" data-translate="cta.button">Parler du projet</button>
         </div>
     </section>
 
@@ -2019,7 +2259,7 @@
                 }, 900);
             }
 
-            // Initialiser avec la première phrase
+            // Initialiser avec la première phrase (si l'élément slider existe)
             if (aboutText) {
                 const currentLang = localStorage.getItem('preferredLanguage') || 'fr';
                 aboutText.textContent = getCurrentPhrase(0, currentLang);
@@ -2027,10 +2267,9 @@
                 setTimeout(() => {
                     aboutText.classList.add('slide-in');
                 }, 100);
+                // Démarrer le slider automatique (toutes les 6 secondes)
+                setInterval(changePhrase, 6000);
             }
-
-            // Démarrer le slider automatique (toutes les 6 secondes)
-            setInterval(changePhrase, 6000);
         });
     </script>
 
@@ -2115,115 +2354,271 @@
 
             // Hero section
             'hero.title': {
-                fr: 'Transformez votre avenir<br>avec l\'intelligence artificielle',
-                en: 'Transform your future<br>with artificial intelligence'
+                fr: 'Votre vendeur WhatsApp<br>qui ne dort jamais',
+                en: 'Your WhatsApp salesperson<br>who never sleeps'
             },
-            'hero.cta': { fr: 'Contactez-nous', en: 'Contact us' },
+            'hero.cta': { fr: 'Parler à un humain', en: 'Talk to a human' },
+            'hero.cta-demo': { fr: 'Essayer le bot démo', en: 'Try the demo bot' },
             'hero.subtitle1': {
-                fr: 'Des solutions IA prêtes à être déployées immédiatement pour réduire vos tâches, optimiser vos opérations et faire évoluer votre business.',
-                en: 'AI solutions ready to be deployed immediately to reduce your tasks, optimize your operations and grow your business.'
+                fr: 'Bots WhatsApp sur-mesure pour fleuristes, e-commerce et PME. Catalogue, panier, paiement, relances — 100% dans WhatsApp, 24/7.',
+                en: 'Custom WhatsApp bots for florists, e-commerce and SMBs. Catalog, cart, checkout, follow-ups — all inside WhatsApp, 24/7.'
             },
             'hero.subtitle2': {
-                fr: 'Solutions IA innovantes pour propulser votre entreprise vers l\'excellence.',
-                en: 'Innovative AI solutions to propel your business towards excellence.'
+                fr: 'Réponse en moins de 5 secondes. Jamais un client perdu la nuit ou le week-end.',
+                en: 'Under 5 seconds response time. Never lose a customer at night or on weekends again.'
             },
             'hero.subtitle3': {
-                fr: 'Des systèmes intelligents, fiables et autonomes pour accélérer votre croissance.',
-                en: 'Intelligent, reliable and autonomous systems to accelerate your growth.'
+                fr: 'Une plateforme multi-client : chaque bot vit dans son espace isolé, avec son catalogue, son ton et son dashboard.',
+                en: 'A multi-tenant platform: each bot runs in its own isolated workspace, with its own catalog, tone and dashboard.'
             },
 
             // Services
-            'services.title': { fr: 'Nos Services', en: 'Our Services' },
-            'services.subtitle': { fr: 'L\'IA au service de votre croissance', en: 'AI for your growth' },
-            'services.ai.title': { fr: 'Agents IA', en: 'AI Agents' },
+            'services.title': { fr: '3 bots WhatsApp, 3 usages', en: '3 WhatsApp bots, 3 use cases' },
+            'services.subtitle': { fr: 'Choisissez celui qui correspond à votre business', en: 'Pick the one that matches your business' },
+            'services.ai.title': { fr: 'Bot Commerce WhatsApp', en: 'WhatsApp Commerce Bot' },
             'services.ai.desc': {
-                fr: 'Assistants intelligents autonomes pour automatiser vos tâches complexes',
-                en: 'Autonomous intelligent assistants to automate your complex tasks'
+                fr: 'Catalogue, panier, paiement, relances panier abandonné — tout dans WhatsApp',
+                en: 'Catalog, cart, checkout, abandoned cart recovery — all inside WhatsApp'
             },
-            'services.automation.title': { fr: 'Automatisation', en: 'Automation' },
+            'services.automation.title': { fr: 'Bot Support & Handoff', en: 'Support & Handoff Bot' },
             'services.automation.desc': {
-                fr: 'Optimisez vos processus métier avec des workflows intelligents',
-                en: 'Optimize your business processes with intelligent workflows'
+                fr: 'FAQ automatique 24/7 + bascule vers un humain quand c\'est nécessaire',
+                en: '24/7 automatic FAQ + handoff to a human when needed'
             },
-            'services.data.title': { fr: 'Intelligence des données', en: 'Data Intelligence' },
+            'services.data.title': { fr: 'Bot Lead & Prise de RDV', en: 'Lead & Booking Bot' },
             'services.data.desc': {
-                fr: 'Transformez vos données en insights stratégiques actionnables',
-                en: 'Transform your data into actionable strategic insights'
+                fr: 'Qualifie vos prospects, prend les RDV et pousse dans votre CRM automatiquement',
+                en: 'Qualifies prospects, books meetings and pushes to your CRM automatically'
             },
             'services.learn-more': { fr: 'En savoir plus', en: 'Learn more' },
 
+            // Service modals
+            'modal.close': { fr: 'Fermer', en: 'Close' },
+            'modal.agents.title': { fr: 'Bot Commerce WhatsApp', en: 'WhatsApp Commerce Bot' },
+            'modal.agents.li1': {
+                fr: 'Catalogue produits envoyé dans WhatsApp (photos + prix + variantes).',
+                en: 'Product catalog delivered inside WhatsApp (photos + prices + variants).'
+            },
+            'modal.agents.li2': {
+                fr: 'Panier persistant et checkout avec lien de paiement Stripe / PayPlug.',
+                en: 'Persistent cart and checkout with Stripe / PayPlug payment link.'
+            },
+            'modal.agents.li3': {
+                fr: 'Relances automatiques des paniers abandonnés sous 24h.',
+                en: 'Automatic abandoned cart recovery within 24h.'
+            },
+            'modal.agents.li4': {
+                fr: 'Synchronisation Shopify en temps réel (stock, prix, images).',
+                en: 'Real-time Shopify sync (stock, prices, images).'
+            },
+            'modal.agents.li5': {
+                fr: 'Idéal pour fleuristes, mode, food, cosmétique, artisanat.',
+                en: 'Ideal for florists, fashion, food, cosmetics, craft.'
+            },
+            'modal.automation.title': { fr: 'Bot Support & Handoff humain', en: 'Support & Human Handoff Bot' },
+            'modal.automation.li1': {
+                fr: 'Répond instantanément aux questions fréquentes (horaires, livraison, retours…).',
+                en: 'Instant answers to frequent questions (hours, delivery, returns…).'
+            },
+            'modal.automation.li2': {
+                fr: 'Détecte les cas complexes et bascule vers un humain dans Chatwoot.',
+                en: 'Detects complex cases and hands off to a human in Chatwoot.'
+            },
+            'modal.automation.li3': {
+                fr: 'Historique unifié : aucune perte de contexte à la reprise par l\'équipe.',
+                en: 'Unified history: no context loss when the team takes over.'
+            },
+            'modal.automation.li4': {
+                fr: 'Multi-langues (FR, EN, et plus sur demande).',
+                en: 'Multi-language (FR, EN, and more on request).'
+            },
+            'modal.automation.li5': {
+                fr: 'Parfait pour un service client surchargé ou en hors-horaire.',
+                en: 'Perfect for an overwhelmed or after-hours customer service.'
+            },
+            'modal.data.title': { fr: 'Bot Lead & Prise de RDV', en: 'Lead & Booking Bot' },
+            'modal.data.li1': {
+                fr: 'Qualifie le prospect (budget, besoin, urgence) via conversation naturelle.',
+                en: 'Qualifies the prospect (budget, need, urgency) through natural conversation.'
+            },
+            'modal.data.li2': {
+                fr: 'Propose des créneaux Google Calendar / Calendly et confirme dans WhatsApp.',
+                en: 'Offers Google Calendar / Calendly slots and confirms in WhatsApp.'
+            },
+            'modal.data.li3': {
+                fr: 'Pousse automatiquement dans votre CRM (HubSpot, Pipedrive, Notion…).',
+                en: 'Pushes automatically to your CRM (HubSpot, Pipedrive, Notion…).'
+            },
+            'modal.data.li4': {
+                fr: 'Rappels automatiques avant le RDV.',
+                en: 'Automatic reminders before the meeting.'
+            },
+            'modal.data.li5': {
+                fr: 'Idéal pour coachs, consultants, immobilier, services à domicile.',
+                en: 'Ideal for coaches, consultants, real estate, home services.'
+            },
+
             // Process
-            'process.title': { fr: 'Notre Process', en: 'Our Process' },
-            'process.subtitle': { fr: 'Simple, efficace, transformateur', en: 'Simple, efficient, transformative' },
-            'process.step1': { fr: 'Analyse', en: 'Analysis' },
-            'process.step2': { fr: 'Stratégie', en: 'Strategy' },
-            'process.step3': { fr: 'Développement', en: 'Development' },
-            'process.step4': { fr: 'Déploiement', en: 'Deployment' },
+            'process.title': { fr: 'De zéro à bot live en 4 étapes', en: 'From zero to live bot in 4 steps' },
+            'process.subtitle': { fr: 'Généralement 2 à 4 semaines selon votre catalogue', en: 'Typically 2 to 4 weeks depending on your catalog' },
+            'process.step1': { fr: '1. Connexion WhatsApp Business', en: '1. WhatsApp Business setup' },
+            'process.step1.desc': { fr: 'Numéro pro + vérification Meta. On s\'occupe de tout.', en: 'Business number + Meta verification. We handle everything.' },
+            'process.step2': { fr: '2. Import catalogue', en: '2. Catalog import' },
+            'process.step2.desc': { fr: 'Shopify, WooCommerce, CSV, Airtable. Sync automatique.', en: 'Shopify, WooCommerce, CSV, Airtable. Automatic sync.' },
+            'process.step3': { fr: '3. Entraînement', en: '3. Training' },
+            'process.step3.desc': { fr: 'Ton de marque, FAQ, règles métier — votre bot, pas un ChatGPT générique.', en: 'Brand voice, FAQ, business rules — your bot, not a generic ChatGPT.' },
+            'process.step4': { fr: '4. Go live', en: '4. Go live' },
+            'process.step4.desc': { fr: 'Dashboard temps réel, support continu, itérations hebdo.', en: 'Real-time dashboard, continuous support, weekly iterations.' },
 
             // Results
-            'results.title': { fr: 'Impact mesurable', en: 'Measurable Impact' },
+            'results.title': { fr: 'Ce que ça change concrètement', en: 'What it actually changes' },
             'results.subtitle': {
-                fr: 'Résultats concrets de nos déploiements IA',
-                en: 'Concrete results from our AI deployments'
+                fr: 'Chiffres mesurés chez nos clients en production',
+                en: 'Figures measured on our production clients'
             },
-            'results.1.metric': { fr: '250h', en: '250h' },
-            'results.1.label': { fr: 'Économisées par mois', en: 'Saved per month' },
-            'results.2.metric': { fr: '2 sem → 3j', en: '2 wk → 3d' },
-            'results.2.label': { fr: 'Délai de traitement', en: 'Processing time' },
-            'results.3.metric': { fr: '99.8%', en: '99.8%' },
-            'results.3.label': { fr: 'Disponibilité système', en: 'System availability' },
-            'results.4.metric': { fr: '20+', en: '20+' },
-            'results.4.label': { fr: 'Agents IA déployés', en: 'AI Agents deployed' },
-            'results.5.metric': { fr: '96%', en: '96%' },
-            'results.5.label': { fr: 'Précision des agents', en: 'Agent accuracy' },
-            'results.6.metric': { fr: '< 6 mois', en: '< 6 months' },
-            'results.6.label': { fr: 'Retour sur investissement', en: 'Return on investment' },
+            'results.1.metric': { fr: '< 5 sec', en: '< 5 sec' },
+            'results.1.label': { fr: 'Temps de réponse moyen', en: 'Average response time' },
+            'results.2.metric': { fr: '+40%', en: '+40%' },
+            'results.2.label': { fr: 'Conversion vs site web', en: 'Conversion vs website' },
+            'results.3.metric': { fr: '24/7', en: '24/7' },
+            'results.3.label': { fr: 'Zéro message manqué la nuit', en: 'Zero missed message at night' },
+            'results.4.metric': { fr: '~30%', en: '~30%' },
+            'results.4.label': { fr: 'Paniers abandonnés récupérés', en: 'Abandoned carts recovered' },
+            'results.5.metric': { fr: '2–4 sem', en: '2–4 weeks' },
+            'results.5.label': { fr: 'Du kick-off au go live', en: 'From kick-off to go live' },
+            'results.6.metric': { fr: '< 3 mois', en: '< 3 months' },
+            'results.6.label': { fr: 'ROI pour un commerce actif', en: 'ROI for an active business' },
+
+            // Case / Pour qui
+            'case.title': { fr: 'Pour qui c\'est fait', en: 'Who it\'s for' },
+            'case.subtitle': { fr: 'Un bot, votre marque — isolé des autres clients, 100% à vous', en: 'One bot, your brand — isolated from other clients, 100% yours' },
+            'case.type1.title': { fr: 'Commerce produit', en: 'Product commerce' },
+            'case.type1.desc': {
+                fr: 'Fleuriste, mode, cosmétique, food, artisanat. Vos clients commandent directement dans WhatsApp : catalogue, panier, paiement, livraison.',
+                en: 'Florist, fashion, cosmetics, food, craft. Your customers order directly in WhatsApp: catalog, cart, payment, delivery.'
+            },
+            'case.type1.examples': { fr: 'Exemples : bouquets, vêtements, cosmétiques, pâtisserie…', en: 'Examples: bouquets, clothing, cosmetics, pastry…' },
+            'case.type2.title': { fr: 'Service & RDV', en: 'Service & Booking' },
+            'case.type2.desc': {
+                fr: 'Coachs, consultants, immobilier, services à domicile. Le bot qualifie, prend les RDV, pousse dans votre CRM.',
+                en: 'Coaches, consultants, real estate, home services. The bot qualifies, books meetings, pushes to your CRM.'
+            },
+            'case.type2.examples': { fr: 'Exemples : coach sportif, agent immobilier, artisan, thérapeute…', en: 'Examples: fitness coach, real estate agent, tradesperson, therapist…' },
+            'case.type3.title': { fr: 'Support & SaaS', en: 'Support & SaaS' },
+            'case.type3.desc': {
+                fr: 'Équipes support surchargées, SaaS, formateurs. FAQ instantanée + bascule humaine dans Chatwoot.',
+                en: 'Overwhelmed support teams, SaaS, trainers. Instant FAQ + human handoff in Chatwoot.'
+            },
+            'case.type3.examples': { fr: 'Exemples : support SaaS, école en ligne, agence, marketplace…', en: 'Examples: SaaS support, online school, agency, marketplace…' },
+            'case.multitenant': {
+                fr: '<span style="color:#4ade80;font-weight:600;">Architecture multi-tenant.</span> Chaque client a son espace isolé — catalogue, conversations, dashboard, identité — sans croisement avec les autres.',
+                en: '<span style="color:#4ade80;font-weight:600;">Multi-tenant architecture.</span> Each client gets an isolated workspace — catalog, conversations, dashboard, identity — with no crossover between clients.'
+            },
+
+            // Pricing
+            'pricing.title': { fr: 'Combien ça coûte', en: 'How much it costs' },
+            'pricing.subtitle': { fr: 'Prix indicatifs, ajustables selon votre volume et vos intégrations', en: 'Indicative prices, adjustable based on your volume and integrations' },
+            'pricing.popular': { fr: 'Le plus populaire', en: 'Most popular' },
+            'pricing.cta': { fr: 'Démarrer', en: 'Get started' },
+            'pricing.cta.custom': { fr: 'En parler', en: 'Let\'s talk' },
+
+            'pricing.starter.name': { fr: 'Starter', en: 'Starter' },
+            'pricing.starter.target': { fr: 'TPE, petit commerce, début en ligne', en: 'Small business, beginner online store' },
+            'pricing.starter.setup': { fr: '1 500 €', en: '€1,500' },
+            'pricing.starter.setup-label': { fr: 'Installation', en: 'Setup' },
+            'pricing.starter.monthly': { fr: '+ 150 €/mois', en: '+ €150/mo' },
+            'pricing.starter.monthly-label': { fr: 'Hébergement, maintenance, support', en: 'Hosting, maintenance, support' },
+            'pricing.starter.f1': { fr: '✓ FAQ automatique 24/7', en: '✓ 24/7 automatic FAQ' },
+            'pricing.starter.f2': { fr: '✓ 1 catalogue (max 50 produits)', en: '✓ 1 catalog (up to 50 products)' },
+            'pricing.starter.f3': { fr: '✓ Handoff humain', en: '✓ Human handoff' },
+            'pricing.starter.f4': { fr: '✓ Support email', en: '✓ Email support' },
+
+            'pricing.commerce.name': { fr: 'Commerce', en: 'Commerce' },
+            'pricing.commerce.target': { fr: 'E-commerce actif, > 50 DM / jour', en: 'Active e-commerce, 50+ DMs / day' },
+            'pricing.commerce.setup': { fr: '3 500 €', en: '€3,500' },
+            'pricing.commerce.setup-label': { fr: 'Installation', en: 'Setup' },
+            'pricing.commerce.monthly': { fr: '+ 350 €/mois', en: '+ €350/mo' },
+            'pricing.commerce.monthly-label': { fr: 'Hébergement, maintenance, itérations', en: 'Hosting, maintenance, iterations' },
+            'pricing.commerce.f1': { fr: '✓ Tout Starter, plus :', en: '✓ Everything in Starter, plus:' },
+            'pricing.commerce.f2': { fr: '✓ Catalogue illimité + sync Shopify', en: '✓ Unlimited catalog + Shopify sync' },
+            'pricing.commerce.f3': { fr: '✓ Panier + checkout + paiement', en: '✓ Cart + checkout + payment' },
+            'pricing.commerce.f4': { fr: '✓ Relances panier abandonné', en: '✓ Abandoned cart recovery' },
+            'pricing.commerce.f5': { fr: '✓ Dashboard admin temps réel', en: '✓ Real-time admin dashboard' },
+
+            'pricing.custom.name': { fr: 'Sur-mesure', en: 'Custom' },
+            'pricing.custom.target': { fr: 'Multi-boutique, SaaS, intégrations complexes', en: 'Multi-store, SaaS, complex integrations' },
+            'pricing.custom.setup': { fr: 'Sur devis', en: 'Custom quote' },
+            'pricing.custom.setup-label': { fr: 'Scope défini ensemble', en: 'Scope defined together' },
+            'pricing.custom.monthly': { fr: '—', en: '—' },
+            'pricing.custom.monthly-label': { fr: 'Selon volume et SLA', en: 'Based on volume and SLA' },
+            'pricing.custom.f1': { fr: '✓ Architecture multi-tenant', en: '✓ Multi-tenant architecture' },
+            'pricing.custom.f2': { fr: '✓ Intégrations CRM, ERP, custom', en: '✓ CRM, ERP, custom integrations' },
+            'pricing.custom.f3': { fr: '✓ SLA dédié', en: '✓ Dedicated SLA' },
+            'pricing.custom.f4': { fr: '✓ Accompagnement équipe', en: '✓ Team onboarding' },
+
+            // FAQ
+            'faq.title': { fr: 'Questions fréquentes', en: 'Frequently asked questions' },
+            'faq.subtitle': { fr: 'Les objections qu\'on nous pose chaque semaine', en: 'The objections we get every week' },
+            'faq.q1': { fr: 'Il faut un numéro WhatsApp Business séparé ?', en: 'Do I need a separate WhatsApp Business number?' },
+            'faq.a1': {
+                fr: 'Oui, un numéro dédié (jamais celui de votre mobile perso). On vous aide à le mettre en place : soit vous en prenez un nouveau, soit on migre un numéro existant. Compte WhatsApp Business API officiel via Meta — pas de contournement, 100% conforme.',
+                en: 'Yes, a dedicated number (never your personal mobile). We help you set it up: either you get a new one, or we migrate an existing one. Official WhatsApp Business API account via Meta — no workaround, 100% compliant.'
+            },
+            'faq.q2': { fr: 'Combien de temps pour que Meta approuve le compte ?', en: 'How long does Meta take to approve the account?' },
+            'faq.a2': {
+                fr: 'En moyenne 3 à 7 jours ouvrés pour la vérification du business par Meta. On prépare le dossier avec vous pour maximiser les chances de validation au premier coup.',
+                en: 'On average 3 to 7 business days for Meta business verification. We prep the application with you to maximize first-pass approval.'
+            },
+            'faq.q3': { fr: 'Ça marche avec Shopify / WooCommerce ?', en: 'Does it work with Shopify / WooCommerce?' },
+            'faq.a3': {
+                fr: 'Oui. Sync automatique du catalogue (produits, stock, prix, images) toutes les 6h par défaut, ou en temps réel via webhooks. On gère aussi Airtable, Notion, Google Sheets et CSV pour les catalogues plus simples.',
+                en: 'Yes. Automatic catalog sync (products, stock, prices, images) every 6h by default, or in real time via webhooks. We also handle Airtable, Notion, Google Sheets and CSV for simpler catalogs.'
+            },
+            'faq.q4': { fr: 'Et le RGPD ?', en: 'What about GDPR?' },
+            'faq.a4': {
+                fr: 'Données hébergées en Europe (Supabase EU-West). Contrat de sous-traitance fourni, consentement explicite côté client, droit à l\'oubli en 1 clic depuis le dashboard. Mentions légales et politique de confidentialité conformes.',
+                en: 'Data hosted in Europe (Supabase EU-West). DPA provided, explicit customer consent, 1-click right to erasure from the dashboard. Legal notice and privacy policy compliant.'
+            },
+            'faq.q5': { fr: 'Combien de temps pour être en ligne ?', en: 'How long until it\'s live?' },
+            'faq.a5': {
+                fr: '2 à 4 semaines en moyenne selon la taille de votre catalogue et la complexité des règles métier. Pour un Starter simple, parfois 1 semaine suffit.',
+                en: '2 to 4 weeks on average depending on catalog size and business rule complexity. For a simple Starter, sometimes 1 week is enough.'
+            },
+            'faq.q6': { fr: 'Qui possède le bot et le numéro ?', en: 'Who owns the bot and the number?' },
+            'faq.a6': {
+                fr: 'Vous. Le numéro WhatsApp Business est à votre nom. Si vous arrêtez un jour, vous gardez numéro, historique de conversations et base clients. Pas de verrouillage contractuel.',
+                en: 'You do. The WhatsApp Business number is in your name. If you ever stop, you keep the number, conversation history and customer base. No contract lock-in.'
+            },
+
+            // Intégrations
+            'integrations.title': { fr: 'Intégrations natives', en: 'Native integrations' },
+            'integrations.subtitle': { fr: 'La stack qu\'on utilise, et qu\'on connecte à la vôtre', en: 'The stack we run on — and the one we connect to yours' },
 
             // About
-            'about.title': { fr: 'À propos d\'iwox.ai', en: 'About iwox.ai' },
-            'about.phrase1': {
-                fr: 'IW0X.AI développe des solutions d\'intelligence artificielle capables d\'automatiser, optimiser et augmenter les performances de votre entreprise.',
-                en: 'IW0X.AI develops artificial intelligence solutions capable of automating, optimizing and boosting your company\'s performance.'
+            'about.title': { fr: 'Qui est derrière iwox.ai', en: 'Who\'s behind iwox.ai' },
+            'about.p1': {
+                fr: 'Je suis Marc, fondateur d\'iwox.ai. On construit des bots WhatsApp en production pour des commerçants, des prestataires de services et des SaaS — sur une plateforme multi-tenant pensée pour passer à l\'échelle.',
+                en: 'I\'m Marc, founder of iwox.ai. We build production WhatsApp bots for retailers, service providers and SaaS — on a multi-tenant platform designed to scale.'
             },
-            'about.phrase2': {
-                fr: 'De l\'intelligence artificielle qui s\'intègre en semaines. Des résultats qui se mesurent en mois.',
-                en: 'Artificial intelligence that integrates in weeks. Results that are measured in months.'
+            'about.p2': {
+                fr: 'Pas un ChatGPT générique qu\'on plug et qu\'on oublie. Un vendeur digital qui connaît vos produits, votre ton, vos règles — et qui reste isolé, à vous, dans son espace dédié.',
+                en: 'Not a generic ChatGPT you plug in and forget. A digital salesperson that knows your products, your tone, your rules — and stays isolated, yours, in its own dedicated workspace.'
             },
-            'about.phrase3': {
-                fr: 'IW0X.AI conçoit des agents IA et des workflows autonomes capables d\'exécuter vos tâches, analyser vos données et améliorer vos résultats.',
-                en: 'IW0X.AI designs AI agents and autonomous workflows capable of executing your tasks, analyzing your data and improving your results.'
-            },
-            'about.phrase4': {
-                fr: 'Architecture IA sur mesure. Construite pour durer. Déployée pour performer.',
-                en: 'Custom AI architecture. Built to last. Deployed to perform.'
-            },
-            'about.phrase5': {
-                fr: 'Nous utilisons l\'intelligence artificielle pour simplifier vos opérations, réduire vos charges et rendre votre business plus autonome.',
-                en: 'We use artificial intelligence to simplify your operations, reduce your costs and make your business more autonomous.'
-            },
-            'about.phrase6': {
-                fr: 'L\'IA qui exécute pendant que vous vous concentrez sur l\'essentiel : votre croissance.',
-                en: 'AI that executes while you focus on what matters: your growth.'
-            },
-            'about.phrase7': {
-                fr: 'Transformez vos données en décisions. Vos processus manuels en automatismes rentables.',
-                en: 'Transform your data into decisions. Your manual processes into profitable automations.'
-            },
-            'about.phrase8': {
-                fr: 'Votre équipe, augmentée par l\'IA. Vos résultats, multipliés par l\'automatisation.',
-                en: 'Your team, augmented by AI. Your results, multiplied by automation.'
+            'about.p3': {
+                fr: 'Le prochain bot déployé, ce sera peut-être le vôtre.',
+                en: 'The next bot we ship might be yours.'
             },
 
-            // CTA
+            // CTA final
             'cta.title': {
-                fr: 'Prêt à automatiser<br>votre business ?',
-                en: 'Ready to automate<br>your business?'
+                fr: 'Prêt à lancer<br>votre bot WhatsApp ?',
+                en: 'Ready to launch<br>your WhatsApp bot?'
             },
             'cta.subtitle': {
-                fr: 'Nous transformons vos tâches en systèmes IA qui travaillent pour vous, 24/7.',
-                en: 'We transform your tasks into AI systems that work for you, 24/7.'
+                fr: 'Un bot qui vend, qui répond et qui travaille pour vous 24/7 — dans WhatsApp, pas sur un site que personne n\'ouvre.',
+                en: 'A bot that sells, responds and works for you 24/7 — inside WhatsApp, not on a website no one opens.'
             },
-            'cta.button': { fr: 'Contactez-nous', en: 'Contact us' },
+            'cta.button': { fr: 'Parler du projet', en: 'Discuss your project' },
 
             // Footer
             'footer.legal': { fr: 'Mentions légales', en: 'Legal Notice' },
@@ -2232,17 +2627,18 @@
             'footer.rights': { fr: 'Tous droits réservés', en: 'All rights reserved' },
 
             // Contact Modal
-            'modal.title': { fr: 'Contactez-nous', en: 'Contact us' },
+            'modal.title': { fr: 'Parler du projet', en: 'Discuss your project' },
             'modal.subtitle': {
                 fr: 'Choisissez votre moyen de communication préféré',
                 en: 'Choose your preferred communication method'
             },
             'modal.whatsapp.title': { fr: 'WhatsApp', en: 'WhatsApp' },
-            'modal.whatsapp.desc': { fr: 'Discussion instantanée', en: 'Instant chat' },
-            'modal.telegram.title': { fr: 'Telegram', en: 'Telegram' },
-            'modal.telegram.desc': { fr: 'Chat avec notre bot', en: 'Chat with our bot' },
+            'modal.whatsapp.desc': { fr: 'Parlez-nous dans WhatsApp', en: 'Chat with us on WhatsApp' },
             'modal.email.title': { fr: 'Email', en: 'Email' },
             'modal.email.desc': { fr: 'Contact direct', en: 'Direct contact' },
+
+            // Sticky WhatsApp
+            'sticky.whatsapp': { fr: 'Essayer le bot démo', en: 'Try the demo bot' },
 
             // Floating button
             'float.expert': { fr: 'Parler avec IwoxBot', en: 'Talk to IwoxBot' },
@@ -2251,16 +2647,16 @@
             'chatbot.title': { fr: 'IwoxBot', en: 'IwoxBot' },
             'chatbot.status': { fr: 'En ligne', en: 'Online' },
             'chatbot.placeholder': {
-                fr: 'Posez votre question sur l\'automatisation IA...',
-                en: 'Ask your question about AI automation...'
+                fr: 'Une question sur les bots WhatsApp ?',
+                en: 'Any question about WhatsApp bots?'
             },
             'chatbot.welcome': {
-                fr: 'Bonjour ! Je suis IwoxBot, spécialisé en automatisation et intelligence artificielle. Comment puis-je vous aider à automatiser votre business ?',
-                en: 'Hello! I\'m IwoxBot, specialized in automation and artificial intelligence. How can I help you automate your business?'
+                fr: 'Bonjour ! Je suis IwoxBot. Je peux vous expliquer comment on conçoit des bots WhatsApp pour commerces, services ou SaaS. Que voulez-vous savoir ?',
+                en: 'Hi! I\'m IwoxBot. I can walk you through how we build WhatsApp bots for retailers, services or SaaS. What would you like to know?'
             },
             'chatbot.offtopic': {
-                fr: 'Désolé, je suis spécialisé uniquement dans l\'automatisation et l\'intelligence artificielle pour les entreprises. Pourriez-vous me poser une question sur ces sujets ?',
-                en: 'Sorry, I specialize only in automation and artificial intelligence for businesses. Could you ask me a question on these topics?'
+                fr: 'Désolé, je suis spécialisé sur les bots WhatsApp et leur intégration. Une question sur ce sujet ?',
+                en: 'Sorry, I only cover WhatsApp bots and their integration. Want to ask something on that?'
             }
         };
     </script>
@@ -2339,75 +2735,78 @@
 
     <!-- ========== SERVICE MODALS ========== -->
 
-    <!-- Modal: Agents IA autonomes -->
+    <!-- Modal: Bot Commerce WhatsApp -->
     <div id="modal-agents" class="service-modal">
         <div class="service-modal-overlay"></div>
         <div class="service-modal-content">
             <div class="service-modal-header">
-                <div class="service-modal-icon bg-gradient-to-br from-blue-400 to-purple-400">
+                <div class="service-modal-icon bg-gradient-to-br from-green-400 to-emerald-500">
                     <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
                     </svg>
                 </div>
-                <h3 class="service-modal-title">Agents IA autonomes</h3>
+                <h3 class="service-modal-title" data-translate="modal.agents.title">Bot Commerce WhatsApp</h3>
             </div>
             <div class="service-modal-body">
                 <ul>
-                    <li>Assistants intelligents qui exécutent des tâches automatiquement.</li>
-                    <li>Gestion de messages, emails, support client et CRM.</li>
-                    <li>Automatisation des workflows internes.</li>
-                    <li>Réponse instantanée et actions autonomes.</li>
+                    <li data-translate="modal.agents.li1">Catalogue produits envoyé dans WhatsApp (photos + prix + variantes).</li>
+                    <li data-translate="modal.agents.li2">Panier persistant et checkout avec lien de paiement Stripe / PayPlug.</li>
+                    <li data-translate="modal.agents.li3">Relances automatiques des paniers abandonnés sous 24h.</li>
+                    <li data-translate="modal.agents.li4">Synchronisation Shopify en temps réel (stock, prix, images).</li>
+                    <li data-translate="modal.agents.li5">Idéal pour fleuristes, mode, food, cosmétique, artisanat.</li>
                 </ul>
             </div>
-            <button class="service-modal-close">Fermer</button>
+            <button class="service-modal-close" data-translate="modal.close">Fermer</button>
         </div>
     </div>
 
-    <!-- Modal: Automatisation de vos opérations -->
+    <!-- Modal: Bot Support & Handoff -->
     <div id="modal-automation" class="service-modal">
+        <div class="service-modal-overlay"></div>
+        <div class="service-modal-content">
+            <div class="service-modal-header">
+                <div class="service-modal-icon bg-gradient-to-br from-blue-400 to-cyan-400">
+                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+                    </svg>
+                </div>
+                <h3 class="service-modal-title" data-translate="modal.automation.title">Bot Support & Handoff humain</h3>
+            </div>
+            <div class="service-modal-body">
+                <ul>
+                    <li data-translate="modal.automation.li1">Répond instantanément aux questions fréquentes (horaires, livraison, retours…).</li>
+                    <li data-translate="modal.automation.li2">Détecte les cas complexes et bascule vers un humain dans Chatwoot.</li>
+                    <li data-translate="modal.automation.li3">Historique unifié : aucune perte de contexte à la reprise par l'équipe.</li>
+                    <li data-translate="modal.automation.li4">Multi-langues (FR, EN, et plus sur demande).</li>
+                    <li data-translate="modal.automation.li5">Parfait pour un service client surchargé ou en hors-horaire.</li>
+                </ul>
+            </div>
+            <button class="service-modal-close" data-translate="modal.close">Fermer</button>
+        </div>
+    </div>
+
+    <!-- Modal: Bot Lead & Prise de RDV -->
+    <div id="modal-data" class="service-modal">
         <div class="service-modal-overlay"></div>
         <div class="service-modal-content">
             <div class="service-modal-header">
                 <div class="service-modal-icon bg-gradient-to-br from-purple-400 to-pink-400">
                     <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                     </svg>
                 </div>
-                <h3 class="service-modal-title">Automatisation de vos opérations</h3>
+                <h3 class="service-modal-title" data-translate="modal.data.title">Bot Lead & Prise de RDV</h3>
             </div>
             <div class="service-modal-body">
                 <ul>
-                    <li>Suppression des tâches répétitives du quotidien.</li>
-                    <li>Workflows connectés à vos outils (CRM, email, site).</li>
-                    <li>Réduction des erreurs humaines.</li>
-                    <li>Exécution 24/7, fiable et scalable.</li>
+                    <li data-translate="modal.data.li1">Qualifie le prospect (budget, besoin, urgence) via conversation naturelle.</li>
+                    <li data-translate="modal.data.li2">Propose des créneaux Google Calendar / Calendly et confirme dans WhatsApp.</li>
+                    <li data-translate="modal.data.li3">Pousse automatiquement dans votre CRM (HubSpot, Pipedrive, Notion…).</li>
+                    <li data-translate="modal.data.li4">Rappels automatiques avant le RDV.</li>
+                    <li data-translate="modal.data.li5">Idéal pour coachs, consultants, immobilier, services à domicile.</li>
                 </ul>
             </div>
-            <button class="service-modal-close">Fermer</button>
-        </div>
-    </div>
-
-    <!-- Modal: Intelligence de vos données -->
-    <div id="modal-data" class="service-modal">
-        <div class="service-modal-overlay"></div>
-        <div class="service-modal-content">
-            <div class="service-modal-header">
-                <div class="service-modal-icon bg-gradient-to-br from-cyan-400 to-blue-400">
-                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
-                    </svg>
-                </div>
-                <h3 class="service-modal-title">Intelligence de vos données</h3>
-            </div>
-            <div class="service-modal-body">
-                <ul>
-                    <li>Analyse automatique de vos données clés.</li>
-                    <li>Génération de rapports et insights.</li>
-                    <li>Alertes intelligentes en temps réel.</li>
-                    <li>Visualisation claire pour prise de décision rapide.</li>
-                </ul>
-            </div>
-            <button class="service-modal-close">Fermer</button>
+            <button class="service-modal-close" data-translate="modal.close">Fermer</button>
         </div>
     </div>
 
