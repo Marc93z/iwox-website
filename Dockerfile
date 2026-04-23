@@ -1,52 +1,35 @@
-# Stage 1: Build backend
-FROM node:18-alpine AS backend-builder
-WORKDIR /app/backend
-COPY backend/package*.json ./
-RUN npm ci --only=production
-COPY backend/ ./
+# syntax=docker/dockerfile:1.6
 
-# Stage 2: Runtime avec Nginx + Node
-FROM node:18-alpine
+# Stage 1: deps
+FROM node:20-alpine AS deps
 WORKDIR /app
+COPY package.json package-lock.json* ./
+RUN npm ci || npm install
 
-# Installer Nginx
-RUN apk add --no-cache nginx supervisor
+# Stage 2: build
+FROM node:20-alpine AS builder
+WORKDIR /app
+COPY --from=deps /app/node_modules ./node_modules
+COPY . .
+ENV NEXT_TELEMETRY_DISABLED=1
+RUN npm run build
 
-# Copier le backend
-COPY --from=backend-builder /app/backend /app/backend
+# Stage 3: runtime
+FROM node:20-alpine AS runner
+WORKDIR /app
+ENV NODE_ENV=production
+ENV NEXT_TELEMETRY_DISABLED=1
+ENV PORT=3000
+ENV HOSTNAME=0.0.0.0
 
-# Copier le frontend
-COPY index.html mentions-legales.html politique-confidentialite.html /usr/share/nginx/html/
-RUN chmod -R 755 /usr/share/nginx/html/
-COPY nginx.conf /etc/nginx/http.d/default.conf
+RUN addgroup --system --gid 1001 nodejs \
+  && adduser --system --uid 1001 nextjs
 
-# Configuration Supervisor (lance Nginx + Node ensemble)
-RUN mkdir -p /var/log/supervisor
-COPY <<'SUPERVISOR' /etc/supervisord.conf
-[supervisord]
-nodaemon=true
-user=root
+COPY --from=builder --chown=nextjs:nodejs /app/public ./public
+COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
+COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 
-[program:backend]
-command=node /app/backend/server.js
-directory=/app/backend
-autostart=true
-autorestart=true
-stdout_logfile=/dev/stdout
-stdout_logfile_maxbytes=0
-stderr_logfile=/dev/stderr
-stderr_logfile_maxbytes=0
+USER nextjs
+EXPOSE 3000
 
-[program:nginx]
-command=nginx -g 'daemon off;'
-autostart=true
-autorestart=true
-stdout_logfile=/dev/stdout
-stdout_logfile_maxbytes=0
-stderr_logfile=/dev/stderr
-stderr_logfile_maxbytes=0
-SUPERVISOR
-
-EXPOSE 80 3001
-
-CMD ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
+CMD ["node", "server.js"]
